@@ -1,0 +1,317 @@
+[
+    {
+        "id": "1",
+        "name": "Millimeter",
+        "idCategory": "1"
+    },
+    {
+        "id": "2",
+        "name": "Centimeter",
+        "idCategory": "1"
+    },
+    {
+        "id": "3",
+        "name": "Decimeter",
+        "idCategory": "1"
+    },
+    {
+        "id": "4",
+        "name": "Meter",
+        "idCategory": "1"
+    },
+    {
+        "id": "5",
+        "name": "Decameter",
+        "idCategory": "1"
+    },
+    {
+        "id": "6",
+        "name": "Hectometer",
+        "idCategory": "1"
+    },
+    {
+        "id": "7",
+        "name": "Kilometer",
+        "idCategory": "1"
+    },
+    {
+        "id": "8",
+        "name": "Square Millimeter",
+        "idCategory": "2"
+    },
+    {
+        "id": "9",
+        "name": "Square Centimeter",
+        "idCategory": "2"
+    },
+    {
+        "id": "10",
+        "name": "Square Decimeter",
+        "idCategory": "2"
+    },
+    {
+        "id": "11",
+        "name": "Square Meter",
+        "idCategory": "2"
+    },
+    {
+        "id": "12",
+        "name": "Square Decameter",
+        "idCategory": "2"
+    },
+    {
+        "id": "13",
+        "name": "Square Hectometer",
+        "idCategory": "2"
+    },
+    {
+        "id": "14",
+        "name": "Square Kilometer",
+        "idCategory": "2"
+    },
+    {
+        "id": "15",
+        "name": "Cubic Millimeter",
+        "idCategory": "3"
+    },
+    {
+        "id": "16",
+        "name": "Cubic Centimeter",
+        "idCategory": "3"
+    },
+    {
+        "id": "17",
+        "name": "Cubic Decimeter",
+        "idCategory": "3"
+    },
+    {
+        "id": "18",
+        "name": "Cubic Meter",
+        "idCategory": "3"
+    },
+    {
+        "id": "19",
+        "name": "Cubic Decameter",
+        "idCategory": "3"
+    },
+    {
+        "id": "20",
+        "name": "Cubic Hectometer",
+        "idCategory": "3"
+    },
+    {
+        "id": "21",
+        "name": "Cubic Kilometer",
+        "idCategory": "3"
+    },
+    {
+        "id": "22",
+        "name": "Milligram",
+        "idCategory": "4"
+    },
+    {
+        "id": "23",
+        "name": "Centigram",
+        "idCategory": "4"
+    },
+    {
+        "id": "25",
+        "name": "Gram",
+        "idCategory": "4"
+    },
+    {
+        "id": "28",
+        "name": "Kilogram",
+        "idCategory": "4"
+    },
+    {
+        "id": "29",
+        "name": "Seconds",
+        "idCategory": "5"
+    },
+    {
+        "id": "30",
+        "name": "Minutes",
+        "idCategory": "5"
+    },
+    {
+        "id": "31",
+        "name": "Hours",
+        "idCategory": "5"
+    },
+    {
+        "id": "32",
+        "name": "Bytes",
+        "idCategory": "6"
+    },
+    {
+        "id": "33",
+        "name": "Kilobytes",
+        "idCategory": "6"
+    },
+    {
+        "id": "34",
+        "name": "Megabytes",
+        "idCategory": "6"
+    },
+    {
+        "id": "35",
+        "name": "Gigabytes",
+        "idCategory": "6"
+    },
+    {
+        "id": "36",
+        "name": "Real",
+        "idCategory": "7"
+    },
+    {
+        "id": "37",
+        "name": "Dolar",
+        "idCategory": "7"
+    },
+    {
+        "id": "38",
+        "name": "Euro",
+        "idCategory": "7"
+    },  
+    {
+        "id": "39",
+        "name": "Joule",
+        "idCategory": "8"
+    },
+    {
+        "id": "40",
+        "name": "Kilojoule",
+        "idCategory": "8"
+    },
+    {
+        "id": "41",
+        "name": "Megajoule",
+        "idCategory": "8"
+    },
+    {
+        "id": "42",
+        "name": "Gigajoule",
+        "idCategory": "8"
+    },
+    {
+        "id": "43",
+        "name": "Milliohms",
+        "idCategory": "9"
+    },
+    {
+        "id": "44",
+        "name": "Ohms",
+        "idCategory": "9"
+    },
+    {
+        "id": "45",
+        "name": "Kiloohms",
+        "idCategory": "9"
+    },
+    {
+        "id": "46",
+        "name": "Nanocoulombs",
+        "idCategory": "10"
+    },
+    {
+        "id": "47",
+        "name": "Microcoulombs",
+        "idCategory": "10"
+    },
+    {
+        "id": "48",
+        "name": "Millicoulombs",
+        "idCategory": "10"
+    },
+    {
+        "id": "49",
+        "name": "Coulombs",
+        "idCategory": "10"
+    },
+    {
+        "id": "50",
+        "name": "Volt",
+        "idCategory": "11"
+    },
+    {
+        "id": "51",
+        "name": "Kilovolt",
+        "idCategory": "11"
+    },
+    {
+        "id": "52",
+        "name": "Megavolt",
+        "idCategory": "11"
+    },
+    {
+        "id": "53",
+        "name": "Gigavolt",
+        "idCategory": "11"
+    },
+    {
+        "id": "54",
+        "name": "Hertz",
+        "idCategory": "12"
+    },
+    {
+        "id": "55",
+        "name": "Kilohertz",
+        "idCategory": "12"
+    },
+    {
+        "id": "56",
+        "name": "Megahertz",
+        "idCategory": "12"
+    },
+    {
+        "id": "57",
+        "name": "Gigahertz",
+        "idCategory": "12"
+    },
+    {
+        "id": "58",
+        "name": "Pascal",
+        "idCategory": "13"
+    },
+    {
+        "id": "59",
+        "name": "Kilopascal",
+        "idCategory": "13"
+    },
+    {
+        "id": "60",
+        "name": "Megapascal",
+        "idCategory": "13"
+    },
+    {
+        "id": "61",
+        "name": "Gigapascal",
+        "idCategory": "13"
+    },
+    {
+        "id": "62",
+        "name": "Kelvin",
+        "idCategory": "14"
+    },
+    {
+        "id": "63",
+        "name": "Celsius",
+        "idCategory": "14"
+    },
+    {
+        "id": "64",
+        "name": "Fahrenheit",
+        "idCategory": "14"
+    },
+    {
+        "id": "65",
+        "name": "Meters per second",
+        "idCategory": "15"
+    },
+    {
+        "id": "66",
+        "name": "Kilometers per hour",
+        "idCategory": "15"
+    }
+]
