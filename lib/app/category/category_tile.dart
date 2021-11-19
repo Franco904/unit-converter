@@ -40,7 +40,7 @@ class CategoryTile extends StatelessWidget {
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
                       category.name,
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 17),
                     ),
                   ),
                 ),

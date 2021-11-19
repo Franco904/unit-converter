@@ -17,16 +17,23 @@ class UnitConverter extends StatefulWidget {
 }
 
 class _UnitConverterState extends State<UnitConverter> {
-  String? fromUnit; // dropdownInput unit name
-  String? toUnit; // dropdownOutput unit name
+  String? _fromUnit; // dropdownInput unit name
+  String? _toUnit; // dropdownOutput unit name
 
-  late int fromUnitId; // dropdownInput unit id
-  late int toUnitId; // dropdownOutput unit id
+  late int _fromUnitId; // dropdownInput unit id
+  late int _toUnitId; // dropdownOutput unit id
 
-  String inputString = '';
-  String outputString = '';
+  String _inputString = '';
+  String _outputString = '';
 
-  final conversionKey = GlobalKey<FormState>();
+  final _conversionKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // TODO: HintTooltip para alertar a função do botão converter
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +46,7 @@ class _UnitConverterState extends State<UnitConverter> {
           padding: EdgeInsets.only(top: 40),
           child: SingleChildScrollView(
             child: Form(
-              key: conversionKey,
+              key: _conversionKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +56,7 @@ class _UnitConverterState extends State<UnitConverter> {
                     child: Text(
                       'Input ${widget.category.name.toLowerCase()} value',
                       style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(child: input()),
@@ -60,8 +67,7 @@ class _UnitConverterState extends State<UnitConverter> {
             ),
           ),
         ),
-        resizeToAvoidBottomInset: false
-    );
+        resizeToAvoidBottomInset: false);
   }
 
   input() {
@@ -78,14 +84,14 @@ class _UnitConverterState extends State<UnitConverter> {
             contentPadding: EdgeInsets.only(left: 12),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
           ),
-          onChanged: (value) => inputString = value,
+          onChanged: (value) => _inputString = value,
           validator: (value) => value == null || value.isEmpty
               ? 'Please input a convert value'
               : null,
         ),
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
-            value: fromUnit,
+            value: _fromUnit,
             hint: Text('Select a ${widget.category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
@@ -105,7 +111,7 @@ class _UnitConverterState extends State<UnitConverter> {
       quarterTurns: 1,
       child: Center(
         child: IconButton(
-          onPressed: () => onConvertPressed(conversionKey),
+          onPressed: () => onConvertPressed(_conversionKey),
           icon: Icon(
             Icons.compare_arrows_rounded,
             color: Colors.cyan[600],
@@ -121,7 +127,7 @@ class _UnitConverterState extends State<UnitConverter> {
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         DropdownButtonFormField<String>(
-            value: toUnit,
+            value: _toUnit,
             hint: Text('Select a ${widget.category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
@@ -134,7 +140,7 @@ class _UnitConverterState extends State<UnitConverter> {
                 .toList()),
         SizedBox(height: 16),
         InputDecorator(
-          child: Text(outputString),
+          child: Text(_outputString),
           decoration: InputDecoration(
             hoverColor: Colors.grey[200],
             labelText: 'Output',
@@ -149,11 +155,11 @@ class _UnitConverterState extends State<UnitConverter> {
 
   updateDropdownInput(String? newValue) {
     setState(() {
-      fromUnit = newValue;
+      _fromUnit = newValue;
 
       widget.category.units.forEach((u) {
         if (u.name == newValue) {
-          fromUnitId = u.id;
+          _fromUnitId = u.id;
         }
       });
     });
@@ -161,11 +167,11 @@ class _UnitConverterState extends State<UnitConverter> {
 
   updateDropdownOutput(String? newValue) {
     setState(() {
-      toUnit = newValue;
+      _toUnit = newValue;
 
       widget.category.units.forEach((u) {
         if (u.name == newValue) {
-          toUnitId = u.id;
+          _toUnitId = u.id;
         }
       });
     });
@@ -183,7 +189,7 @@ class _UnitConverterState extends State<UnitConverter> {
   convert() {
     var currentCategoryId = widget.category.id;
 
-    num inputValue = int.parse(inputString);
+    num inputValue = int.parse(_inputString);
     num outputValue = 0;
 
     num base = 0;
@@ -196,7 +202,7 @@ class _UnitConverterState extends State<UnitConverter> {
       case 2:
       case 3:
         base = pow(10, currentCategoryId);
-        exponent = fromUnitId - toUnitId;
+        exponent = _fromUnitId - _toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -204,7 +210,7 @@ class _UnitConverterState extends State<UnitConverter> {
       // Mass
       case 4:
         base = 10;
-        exponent = fromUnitId - toUnitId;
+        exponent = _fromUnitId - _toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -212,7 +218,7 @@ class _UnitConverterState extends State<UnitConverter> {
       // Time
       case 5:
         base = 60;
-        exponent = fromUnitId - toUnitId;
+        exponent = _fromUnitId - _toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -220,7 +226,7 @@ class _UnitConverterState extends State<UnitConverter> {
       // Digital Storage
       case 6:
         base = pow(2, 10);
-        exponent = fromUnitId - toUnitId;
+        exponent = _fromUnitId - _toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -229,17 +235,17 @@ class _UnitConverterState extends State<UnitConverter> {
       case 7:
         // TODO: Como faço para buscar a cotação atualizada das moedas?
 
-        if (fromUnit == 'Real' && toUnit == 'Dolar') {
+        if (_fromUnit == 'Real' && _toUnit == 'Dolar') {
           outputValue = inputValue / 5.53;
-        } else if (fromUnit == 'Dolar' && toUnit == 'Real') {
+        } else if (_fromUnit == 'Dolar' && _toUnit == 'Real') {
           outputValue = inputValue * 5.53;
-        } else if (fromUnit == 'Real' && toUnit == 'Euro') {
+        } else if (_fromUnit == 'Real' && _toUnit == 'Euro') {
           outputValue = inputValue / 6.28;
-        } else if (fromUnit == 'Euro' && toUnit == 'Real') {
+        } else if (_fromUnit == 'Euro' && _toUnit == 'Real') {
           outputValue = inputValue * 6.28;
-        } else if (fromUnit == 'Dolar' && toUnit == 'Euro') {
+        } else if (_fromUnit == 'Dolar' && _toUnit == 'Euro') {
           outputValue = inputValue / 1.13;
-        } else if (fromUnit == 'Euro' && toUnit == 'Dolar') {
+        } else if (_fromUnit == 'Euro' && _toUnit == 'Dolar') {
           outputValue = inputValue * 1.13;
         } else {
           outputValue = inputValue;
@@ -257,24 +263,24 @@ class _UnitConverterState extends State<UnitConverter> {
       case 12:
       case 13:
         base = pow(10, 3);
-        exponent = fromUnitId - toUnitId;
+        exponent = _fromUnitId - _toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
 
       // Temperature
       case 14:
-        if (fromUnit == 'Kelvin' && toUnit == 'Celsius') {
+        if (_fromUnit == 'Kelvin' && _toUnit == 'Celsius') {
           outputValue = inputValue - 273;
-        } else if (fromUnit == 'Celsius' && toUnit == 'Kelvin') {
+        } else if (_fromUnit == 'Celsius' && _toUnit == 'Kelvin') {
           outputValue = inputValue + 273;
-        } else if (fromUnit == 'Fahrenheit' && toUnit == 'Celsius') {
+        } else if (_fromUnit == 'Fahrenheit' && _toUnit == 'Celsius') {
           outputValue = (5 * inputValue - 160) / 9;
-        } else if (fromUnit == 'Celsius' && toUnit == 'Fahrenheit') {
+        } else if (_fromUnit == 'Celsius' && _toUnit == 'Fahrenheit') {
           outputValue = (9 * inputValue) / 5 + 32;
-        } else if (fromUnit == 'Fahrenheit' && toUnit == 'Kelvin') {
+        } else if (_fromUnit == 'Fahrenheit' && _toUnit == 'Kelvin') {
           outputValue = (5 * inputValue - 160) / 9 + 273;
-        } else if (fromUnit == 'Kelvin' && toUnit == 'Fahrenheit') {
+        } else if (_fromUnit == 'Kelvin' && _toUnit == 'Fahrenheit') {
           outputValue = (9 * inputValue - 2457) / 5 + 32;
         } else {
           outputValue = inputValue;
@@ -284,7 +290,7 @@ class _UnitConverterState extends State<UnitConverter> {
       // Speed
       case 15:
         base = 3.6;
-        exponent = toUnitId - fromUnitId;
+        exponent = _toUnitId - _fromUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -296,7 +302,7 @@ class _UnitConverterState extends State<UnitConverter> {
     var formatter = NumberFormat('#,##,000');
 
     setState(() {
-      outputString = outputValue.toString();
+      _outputString = outputValue.toString();
     });
   }
 }

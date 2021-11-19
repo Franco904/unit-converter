@@ -103,7 +103,7 @@ class _CategoryRouteState extends State<CategoryRoute> {
           title: Text('Categories'),
           centerTitle: true,
           backgroundColor: Colors.cyan,
-          // automaticallyImplyLeading: false
+          automaticallyImplyLeading: false
         ),
         body: OrientationBuilder(
           builder: (context, orientation) => orientation == Orientation.portrait

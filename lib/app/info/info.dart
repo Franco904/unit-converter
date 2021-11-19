@@ -18,8 +18,9 @@ class Info extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 24),
-              Divider(height: 50, color: Colors.grey),
+              SizedBox(height: 25),
+              Divider(color: Colors.grey),
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.center,
                 child: Column(
@@ -44,7 +45,9 @@ class Info extends StatelessWidget {
                   ],
                 ),
               ),
-              Divider(height: 50, color: Colors.grey)
+              SizedBox(height: 20),
+              Divider(color: Colors.grey),
+              SizedBox(height: 20),
             ],
           ),
         ),
