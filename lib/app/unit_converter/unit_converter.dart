@@ -1,22 +1,17 @@
-// ignore_for_file: avoid_print, prefer_const_constructors, prefer_const_literals_to_create_immutables, dead_code, unused_element, prefer_typing_uninitialized_variables, avoid_function_literals_in_foreach_calls
-
 import 'dart:math';
 
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:tutorial_inicial/app/category_list/category.dart';
+import 'package:tutorial_inicial/app/category_list/category_list_controller.dart';
 
-class UnitConverter extends StatefulWidget {
+class UnitConverter extends GetView<CategoryListController> {
   final Category category;
 
-  const UnitConverter({Key? key, required this.category}) : super(key: key);
+  UnitConverter({Key? key, required this.category}) : super(key: key);
 
-  @override
-  State<StatefulWidget> createState() => _UnitConverterState();
-}
-
-class _UnitConverterState extends State<UnitConverter> {
   String? _fromUnit; // dropdownInput unit name
   String? _toUnit; // dropdownOutput unit name
 
@@ -28,17 +23,17 @@ class _UnitConverterState extends State<UnitConverter> {
 
   final _conversionKey = GlobalKey<FormState>();
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    // TODO: HintTooltip para alertar a função do botão converter
-  }
+  //   // TODO: HintTooltip para alertar a função do botão converter
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(widget.category.name), centerTitle: true, backgroundColor: Colors.cyan),
+        appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
         body: Padding(
           padding: EdgeInsets.only(top: 40),
           child: SingleChildScrollView(
@@ -51,13 +46,13 @@ class _UnitConverterState extends State<UnitConverter> {
                   Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      'Input ${widget.category.name.toLowerCase()} value',
+                      'Input ${category.name.toLowerCase()} value',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(child: input()),
-                  Container(child: arrows()),
-                  Container(child: output()),
+                  input(context),
+                  arrows(context),
+                  output(context),
                 ],
               ),
             ),
@@ -66,7 +61,7 @@ class _UnitConverterState extends State<UnitConverter> {
         resizeToAvoidBottomInset: false);
   }
 
-  input() {
+  Widget input(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -86,22 +81,22 @@ class _UnitConverterState extends State<UnitConverter> {
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
             value: _fromUnit,
-            hint: Text('Select a ${widget.category.name.toLowerCase()} unit'),
+            hint: Text('Select a ${category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
             validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
-            onChanged: (newValue) => updateDropdownInput(newValue),
-            items: widget.category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+            onChanged: (newValue) => _updateDropdownInput(newValue),
+            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
       ]),
     );
   }
 
-  arrows() {
+  Widget arrows(BuildContext context) {
     return RotatedBox(
       quarterTurns: 1,
       child: Center(
         child: IconButton(
-          onPressed: () => onConvertPressed(_conversionKey),
+          onPressed: () => _onConvertPressed(_conversionKey),
           icon: Icon(
             Icons.compare_arrows_rounded,
             color: Colors.cyan[600],
@@ -112,18 +107,18 @@ class _UnitConverterState extends State<UnitConverter> {
     );
   }
 
-  output() {
+  Widget output(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         DropdownButtonFormField<String>(
             value: _toUnit,
-            hint: Text('Select a ${widget.category.name.toLowerCase()} unit'),
+            hint: Text('Select a ${category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
             validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
-            onChanged: (newValue) => updateDropdownOutput(newValue),
-            items: widget.category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+            onChanged: (newValue) => _updateDropdownOutput(newValue),
+            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
         SizedBox(height: 16),
         InputDecorator(
           child: Text(_outputString),
@@ -139,41 +134,37 @@ class _UnitConverterState extends State<UnitConverter> {
     );
   }
 
-  updateDropdownInput(String? newValue) {
-    setState(() {
+  void _updateDropdownInput(String? newValue) {
       _fromUnit = newValue;
 
-      widget.category.units.forEach((u) {
+      category.units.forEach((u) {
         if (u.name == newValue) {
           _fromUnitId = u.id;
         }
       });
-    });
   }
 
-  updateDropdownOutput(String? newValue) {
-    setState(() {
+  void _updateDropdownOutput(String? newValue) {
       _toUnit = newValue;
 
-      widget.category.units.forEach((u) {
+      category.units.forEach((u) {
         if (u.name == newValue) {
           _toUnitId = u.id;
         }
       });
-    });
   }
 
-  onConvertPressed(GlobalKey<FormState> conversionKey) {
+  void _onConvertPressed(GlobalKey<FormState> conversionKey) {
     conversionKey.currentState?.save();
     var isValid = conversionKey.currentState?.validate();
 
     if (isValid != null && isValid) {
-      convert();
+      _convert();
     }
   }
 
-  convert() {
-    var currentCategoryId = widget.category.id;
+  void _convert() {
+    var currentCategoryId = category.id;
 
     num inputValue = int.parse(_inputString);
     num outputValue = 0;
@@ -287,8 +278,7 @@ class _UnitConverterState extends State<UnitConverter> {
     // TODO: Como imprimir output com separação de casas decimais?
     var formatter = NumberFormat('#,##,000');
 
-    setState(() {
-      _outputString = outputValue.toString();
-    });
+    _outputString = outputValue.toString();
+
   }
 }
