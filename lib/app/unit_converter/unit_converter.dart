@@ -1,34 +1,17 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:tutorial_inicial/app/category_list/category.dart';
-import 'package:tutorial_inicial/app/category_list/category_list_controller.dart';
+import 'package:tutorial_inicial/app/unit_converter/unit_converter_controller.dart';
 
-class UnitConverter extends GetView<CategoryListController> {
+class UnitConverter extends GetView<UnitConverterController> {
   final Category category;
 
-  UnitConverter({Key? key, required this.category}) : super(key: key);
+  const UnitConverter({required this.category});
 
-  String? _fromUnit; // dropdownInput unit name
-  String? _toUnit; // dropdownOutput unit name
-
-  late int _fromUnitId; // dropdownInput unit id
-  late int _toUnitId; // dropdownOutput unit id
-
-  String _inputString = '';
-  String _outputString = '';
-
-  final _conversionKey = GlobalKey<FormState>();
-
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   // TODO: HintTooltip para alertar a função do botão converter
-  // }
+  // TODO: HintTooltip para alertar a função do botão converter
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +21,7 @@ class UnitConverter extends GetView<CategoryListController> {
           padding: EdgeInsets.only(top: 40),
           child: SingleChildScrollView(
             child: Form(
-              key: _conversionKey,
+              key: controller.formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,12 +58,12 @@ class UnitConverter extends GetView<CategoryListController> {
             contentPadding: EdgeInsets.only(left: 12),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
           ),
-          onChanged: (value) => _inputString = value,
+          onChanged: (value) => controller.inputString = value,
           validator: (value) => value == null || value.isEmpty ? 'Please input a convert value' : null,
         ),
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
-            value: _fromUnit,
+            value: controller.fromUnit,
             hint: Text('Select a ${category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
@@ -96,7 +79,7 @@ class UnitConverter extends GetView<CategoryListController> {
       quarterTurns: 1,
       child: Center(
         child: IconButton(
-          onPressed: () => _onConvertPressed(_conversionKey),
+          onPressed: () => _onConvertPressed(controller.formKey),
           icon: Icon(
             Icons.compare_arrows_rounded,
             color: Colors.cyan[600],
@@ -112,7 +95,7 @@ class UnitConverter extends GetView<CategoryListController> {
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         DropdownButtonFormField<String>(
-            value: _toUnit,
+            value: controller.toUnit,
             hint: Text('Select a ${category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
@@ -121,7 +104,7 @@ class UnitConverter extends GetView<CategoryListController> {
             items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
         SizedBox(height: 16),
         InputDecorator(
-          child: Text(_outputString),
+          child: Obx(() => Text(controller.outputString.value)),
           decoration: InputDecoration(
             hoverColor: Colors.grey[200],
             labelText: 'Output',
@@ -135,23 +118,23 @@ class UnitConverter extends GetView<CategoryListController> {
   }
 
   void _updateDropdownInput(String? newValue) {
-      _fromUnit = newValue;
+    controller.fromUnit = newValue;
 
-      category.units.forEach((u) {
-        if (u.name == newValue) {
-          _fromUnitId = u.id;
-        }
-      });
+    category.units.forEach((u) {
+      if (u.name == newValue) {
+        controller.fromUnitId = u.id;
+      }
+    });
   }
 
   void _updateDropdownOutput(String? newValue) {
-      _toUnit = newValue;
+    controller.toUnit = newValue;
 
-      category.units.forEach((u) {
-        if (u.name == newValue) {
-          _toUnitId = u.id;
-        }
-      });
+    category.units.forEach((u) {
+      if (u.name == newValue) {
+        controller.toUnitId = u.id;
+      }
+    });
   }
 
   void _onConvertPressed(GlobalKey<FormState> conversionKey) {
@@ -166,7 +149,7 @@ class UnitConverter extends GetView<CategoryListController> {
   void _convert() {
     var currentCategoryId = category.id;
 
-    num inputValue = int.parse(_inputString);
+    num inputValue = int.parse(controller.inputString);
     num outputValue = 0;
 
     num base = 0;
@@ -179,7 +162,7 @@ class UnitConverter extends GetView<CategoryListController> {
       case 2:
       case 3:
         base = pow(10, currentCategoryId);
-        exponent = _fromUnitId - _toUnitId;
+        exponent = controller.fromUnitId - controller.toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -187,7 +170,7 @@ class UnitConverter extends GetView<CategoryListController> {
       // Mass
       case 4:
         base = 10;
-        exponent = _fromUnitId - _toUnitId;
+        exponent = controller.fromUnitId - controller.toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -195,7 +178,7 @@ class UnitConverter extends GetView<CategoryListController> {
       // Time
       case 5:
         base = 60;
-        exponent = _fromUnitId - _toUnitId;
+        exponent = controller.fromUnitId - controller.toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -203,7 +186,7 @@ class UnitConverter extends GetView<CategoryListController> {
       // Digital Storage
       case 6:
         base = pow(2, 10);
-        exponent = _fromUnitId - _toUnitId;
+        exponent = controller.fromUnitId - controller.toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -212,17 +195,17 @@ class UnitConverter extends GetView<CategoryListController> {
       case 7:
         // TODO: Como faço para buscar a cotação atualizada das moedas?
 
-        if (_fromUnit == 'Real' && _toUnit == 'Dolar') {
+        if (controller.fromUnit == 'Real' && controller.toUnit == 'Dolar') {
           outputValue = inputValue / 5.53;
-        } else if (_fromUnit == 'Dolar' && _toUnit == 'Real') {
+        } else if (controller.fromUnit == 'Dolar' && controller.toUnit == 'Real') {
           outputValue = inputValue * 5.53;
-        } else if (_fromUnit == 'Real' && _toUnit == 'Euro') {
+        } else if (controller.fromUnit == 'Real' && controller.toUnit == 'Euro') {
           outputValue = inputValue / 6.28;
-        } else if (_fromUnit == 'Euro' && _toUnit == 'Real') {
+        } else if (controller.fromUnit == 'Euro' && controller.toUnit == 'Real') {
           outputValue = inputValue * 6.28;
-        } else if (_fromUnit == 'Dolar' && _toUnit == 'Euro') {
+        } else if (controller.fromUnit == 'Dolar' && controller.toUnit == 'Euro') {
           outputValue = inputValue / 1.13;
-        } else if (_fromUnit == 'Euro' && _toUnit == 'Dolar') {
+        } else if (controller.fromUnit == 'Euro' && controller.toUnit == 'Dolar') {
           outputValue = inputValue * 1.13;
         } else {
           outputValue = inputValue;
@@ -240,24 +223,24 @@ class UnitConverter extends GetView<CategoryListController> {
       case 12:
       case 13:
         base = pow(10, 3);
-        exponent = _fromUnitId - _toUnitId;
+        exponent = controller.fromUnitId - controller.toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
 
       // Temperature
       case 14:
-        if (_fromUnit == 'Kelvin' && _toUnit == 'Celsius') {
+        if (controller.fromUnit == 'Kelvin' && controller.toUnit == 'Celsius') {
           outputValue = inputValue - 273;
-        } else if (_fromUnit == 'Celsius' && _toUnit == 'Kelvin') {
+        } else if (controller.fromUnit == 'Celsius' && controller.toUnit == 'Kelvin') {
           outputValue = inputValue + 273;
-        } else if (_fromUnit == 'Fahrenheit' && _toUnit == 'Celsius') {
+        } else if (controller.fromUnit == 'Fahrenheit' && controller.toUnit == 'Celsius') {
           outputValue = (5 * inputValue - 160) / 9;
-        } else if (_fromUnit == 'Celsius' && _toUnit == 'Fahrenheit') {
+        } else if (controller.fromUnit == 'Celsius' && controller.toUnit == 'Fahrenheit') {
           outputValue = (9 * inputValue) / 5 + 32;
-        } else if (_fromUnit == 'Fahrenheit' && _toUnit == 'Kelvin') {
+        } else if (controller.fromUnit == 'Fahrenheit' && controller.toUnit == 'Kelvin') {
           outputValue = (5 * inputValue - 160) / 9 + 273;
-        } else if (_fromUnit == 'Kelvin' && _toUnit == 'Fahrenheit') {
+        } else if (controller.fromUnit == 'Kelvin' && controller.toUnit == 'Fahrenheit') {
           outputValue = (9 * inputValue - 2457) / 5 + 32;
         } else {
           outputValue = inputValue;
@@ -267,7 +250,7 @@ class UnitConverter extends GetView<CategoryListController> {
       // Speed
       case 15:
         base = 3.6;
-        exponent = _toUnitId - _fromUnitId;
+        exponent = controller.toUnitId - controller.fromUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -276,9 +259,8 @@ class UnitConverter extends GetView<CategoryListController> {
         print('Unit not found.');
     }
     // TODO: Como imprimir output com separação de casas decimais?
-    var formatter = NumberFormat('#,##,000');
+    // var formatter = NumberFormat('#,##,000');
 
-    _outputString = outputValue.toString();
-
+    controller.outputString.value = outputValue.toString();
   }
 }

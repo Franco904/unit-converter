@@ -5,7 +5,7 @@ import 'package:tutorial_inicial/app/unit_converter/unit_converter.dart';
 class CategoryTile extends StatelessWidget {
   final Category category;
 
-  const CategoryTile({Key? key, required this.category}) : super(key: key);
+  const CategoryTile({required this.category});
 
   // Monta cada uma das opções de categorias
   @override

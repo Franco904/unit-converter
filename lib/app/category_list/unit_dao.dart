@@ -10,7 +10,7 @@ class UnitDao {
   Future<List<Unit>> getUnitsFromCategoryId(int idCategory) async {
     final response = await rootBundle.loadString('lib/assets/data/units.json');
     final unitsJson = await jsonDecode(response);
-    
+
     List<Unit> listUnit = [];
 
     for (Map<String, dynamic> u in unitsJson) {
