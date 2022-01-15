@@ -18,9 +18,7 @@ class UnitConverterApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Unit Converter',
       getPages: getAppPages(),
-      home: Center(
-        child: Welcome()
-      ),
+      home: Center(child: Welcome()),
     );
   }
 }

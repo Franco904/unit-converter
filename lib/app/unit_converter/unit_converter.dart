@@ -5,7 +5,7 @@ import 'dart:math';
 import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
-import 'package:tutorial_inicial/app/category/category.dart';
+import 'package:tutorial_inicial/app/category_list/category.dart';
 
 class UnitConverter extends StatefulWidget {
   final Category category;
@@ -38,10 +38,7 @@ class _UnitConverterState extends State<UnitConverter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text(widget.category.name),
-            centerTitle: true,
-            backgroundColor: Colors.cyan),
+        appBar: AppBar(title: Text(widget.category.name), centerTitle: true, backgroundColor: Colors.cyan),
         body: Padding(
           padding: EdgeInsets.only(top: 40),
           child: SingleChildScrollView(
@@ -55,8 +52,7 @@ class _UnitConverterState extends State<UnitConverter> {
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
                       'Input ${widget.category.name.toLowerCase()} value',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(child: input()),
@@ -85,9 +81,7 @@ class _UnitConverterState extends State<UnitConverter> {
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
           ),
           onChanged: (value) => _inputString = value,
-          validator: (value) => value == null || value.isEmpty
-              ? 'Please input a convert value'
-              : null,
+          validator: (value) => value == null || value.isEmpty ? 'Please input a convert value' : null,
         ),
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
@@ -95,13 +89,9 @@ class _UnitConverterState extends State<UnitConverter> {
             hint: Text('Select a ${widget.category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) =>
-                dropdown == null || dropdown.isEmpty ? 'Required' : null,
+            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
             onChanged: (newValue) => updateDropdownInput(newValue),
-            items: widget.category.units
-                .map((u) => DropdownMenuItem<String>(
-                    value: u.name, child: Text(u.name)))
-                .toList()),
+            items: widget.category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
       ]),
     );
   }
@@ -131,13 +121,9 @@ class _UnitConverterState extends State<UnitConverter> {
             hint: Text('Select a ${widget.category.name.toLowerCase()} unit'),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) =>
-                dropdown == null || dropdown.isEmpty ? 'Required' : null,
+            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
             onChanged: (newValue) => updateDropdownOutput(newValue),
-            items: widget.category.units
-                .map((u) => DropdownMenuItem<String>(
-                    value: u.name, child: Text(u.name)))
-                .toList()),
+            items: widget.category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
         SizedBox(height: 16),
         InputDecorator(
           child: Text(_outputString),

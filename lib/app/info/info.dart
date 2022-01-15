@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
@@ -24,13 +22,10 @@ class Info extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Column(
-                  children: [ 
-                    Text('Unit Converter', style: 
-                      TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.cyan
-                      ),
+                  children: [
+                    Text(
+                      'Unit Converter',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.cyan),
                     ),
                     SizedBox(height: 24),
                     Text('Last update: 18/11/2021'),

@@ -7,9 +7,6 @@ class Unit {
 
   // Cria instância de Unit com dados da string JSON
   factory Unit.fromJson(Map<String, dynamic> json) {
-    return Unit(
-        id: int.parse(json['id']),
-        name: json['name'],
-        idCategory: int.parse(json['idCategory']));
+    return Unit(id: int.parse(json['id']), name: json['name'], idCategory: int.parse(json['idCategory']));
   }
 }

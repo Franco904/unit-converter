@@ -1,23 +1,21 @@
-// ignore_for_file: avoid_print, prefer_const_constructors, avoid_function_literals_in_foreach_calls
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:tutorial_inicial/app/category/category.dart';
-import 'package:tutorial_inicial/app/category/category_tile.dart';
-import 'package:tutorial_inicial/app/conversion/unit.dart';
+import 'package:tutorial_inicial/app/category_list/category.dart';
+import 'package:tutorial_inicial/app/category_list/category_tile.dart';
+import 'package:tutorial_inicial/app/unit_converter/unit.dart';
 import 'package:tutorial_inicial/app/info/info.dart';
 
-class CategoryRoute extends StatefulWidget {
-  const CategoryRoute({Key? key}) : super(key: key);
+class CategoryList extends StatefulWidget {
+  const CategoryList({Key? key}) : super(key: key);
 
   @override
-  _CategoryRouteState createState() => _CategoryRouteState();
+  _CategoryListState createState() => _CategoryListState();
 }
 
-class _CategoryRouteState extends State<CategoryRoute> {
+class _CategoryListState extends State<CategoryList> {
   static const _categoryNames = <String>[
     'Length',
     'Area',
@@ -51,7 +49,7 @@ class _CategoryRouteState extends State<CategoryRoute> {
     Icons.waves_rounded,
     Icons.text_rotation_down_sharp,
     Icons.thermostat_rounded,
-    Icons.speed_rounded,  
+    Icons.speed_rounded,
   ];
 
   final List<Category> _categories = [];
@@ -61,11 +59,7 @@ class _CategoryRouteState extends State<CategoryRoute> {
     super.initState();
 
     for (int i = 0; i < _categoryNames.length; i++) {
-      _categories.add(Category(
-          id: (i + 1),
-          name: _categoryNames[i],
-          icon: _categoryIcons[i],
-          units: _retrieveUnitList(i + 1)));
+      _categories.add(Category(id: (i + 1), name: _categoryNames[i], icon: _categoryIcons[i], units: _retrieveUnitList(i + 1)));
     }
   }
 
@@ -99,35 +93,26 @@ class _CategoryRouteState extends State<CategoryRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Categories'),
-          centerTitle: true,
-          backgroundColor: Colors.cyan,
-          automaticallyImplyLeading: false
-        ),
-        body: OrientationBuilder(
-          builder: (context, orientation) => orientation == Orientation.portrait
-              ? ListView.builder(
-                  itemCount: _categories.length,
-                  itemBuilder: (BuildContext context, int i) {
-                    return Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: CategoryTile(category: _categories[i]));
-                  })
-              : GridView.count(
-                  crossAxisCount: 2,
-                  childAspectRatio: 5,
-                  children: _categories.map((Category c) {
-                    return Padding(
-                        padding: EdgeInsets.only(left: 40, right: 30),
-                        child: CategoryTile(category: c));
-                  }).toList()),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => _toInfo(context),
-          child: Icon(Icons.info_outline_rounded),
-          backgroundColor: Colors.cyan,
-        ),
+      appBar: AppBar(title: Text('Categories'), centerTitle: true, backgroundColor: Colors.cyan, automaticallyImplyLeading: false),
+      body: OrientationBuilder(
+        builder: (context, orientation) => orientation == Orientation.portrait
+            ? ListView.builder(
+                itemCount: _categories.length,
+                itemBuilder: (BuildContext context, int i) {
+                  return Padding(padding: EdgeInsets.only(left: 10), child: CategoryTile(category: _categories[i]));
+                })
+            : GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: 5,
+                children: _categories.map((Category c) {
+                  return Padding(padding: EdgeInsets.only(left: 40, right: 30), child: CategoryTile(category: c));
+                }).toList()),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _toInfo(context),
+        child: Icon(Icons.info_outline_rounded),
+        backgroundColor: Colors.cyan,
+      ),
     );
   }
 
