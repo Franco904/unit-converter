@@ -15,7 +15,7 @@ class CategoryListRepository {
     return CategoryDao.instance.getCategoryIcons();
   }
 
-  Future<List<Unit>> getUnitsFromCategoryId(int idCategory) async {
-    return (await UnitDao.instance.getUnitsFromCategoryId(idCategory));
+  Future<List<Unit>> getUnitsFromCategoryId(int idCategory) {
+    return UnitDao.instance.getUnitsFromCategoryId(idCategory);
   }
 }

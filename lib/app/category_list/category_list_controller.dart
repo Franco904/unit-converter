@@ -9,7 +9,6 @@ class CategoryListController extends GetxController {
   late List<IconData> categoryIcons = <IconData>[];
 
   final List<Category> categories = <Category>[];
-  final List<Unit> units = <Unit>[];
 
   @override
   void onInit() {
@@ -20,11 +19,13 @@ class CategoryListController extends GetxController {
 
     for (int i = 0; i < categoryNames.length; i++) {
       categories.add(Category(id: (i + 1), name: categoryNames[i], icon: categoryIcons[i], units: retrieveUnitList(i + 1)));
-    } 
+    }
   }
 
   List<Unit> retrieveUnitList(int idCategory) {
-    loadUnits(idCategory).then((unitList) { 
+    final units = <Unit>[];
+
+    loadUnits(idCategory).then((unitList) {
       unitList.forEach((u) {
         units.add(u);
       });
