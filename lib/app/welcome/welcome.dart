@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/category_list/category_list.dart';
 
 class Welcome extends StatelessWidget {
@@ -32,7 +33,7 @@ class Welcome extends StatelessWidget {
               SizedBox(height: 300, width: 300),
               SizedBox(height: 32),
               ElevatedButton(
-                  onPressed: () => _toCategoryRoute(context),
+                  onPressed: () => Get.off(() => CategoryList()),
                   style: ElevatedButton.styleFrom(primary: Colors.cyan[600], textStyle: TextStyle(fontSize: 18)),
                   child: Padding(
                     padding: EdgeInsets.only(top: 10, right: 30, bottom: 10, left: 30),
@@ -45,14 +46,6 @@ class Welcome extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  // Navega para CategoryRoute
-  void _toCategoryRoute(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CategoryList()),
     );
   }
 }

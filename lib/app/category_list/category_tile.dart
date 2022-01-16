@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/category_list/category.dart';
 import 'package:tutorial_inicial/app/unit_converter/unit_converter.dart';
 
@@ -17,7 +18,7 @@ class CategoryTile extends StatelessWidget {
         child: InkWell(
           highlightColor: Colors.grey[300],
           splashColor: Colors.grey[350],
-          onTap: () => _toUnitConverter(context),
+          onTap: () => Get.to(() => UnitConverter(category: category)),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -40,14 +41,6 @@ class CategoryTile extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  // Navega para UnitConverter
-  void _toUnitConverter(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => UnitConverter(category: category)),
     );
   }
 }

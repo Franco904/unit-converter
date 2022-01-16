@@ -31,18 +31,10 @@ class CategoryList extends GetView<CategoryListController> {
                 }).toList()),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _toInfo(context),
+        onPressed: () => Get.to(() => Info()),
         child: Icon(Icons.info_outline_rounded),
         backgroundColor: Colors.cyan,
       ),
-    );
-  }
-
-  // Navega para Info
-  _toInfo(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Info()),
     );
   }
 }
