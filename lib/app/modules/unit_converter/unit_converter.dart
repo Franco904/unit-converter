@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
-import 'package:tutorial_inicial/app/category_list/category.dart';
-import 'package:tutorial_inicial/app/unit_converter/unit_converter_controller.dart';
+import 'package:tutorial_inicial/app/data/model/category.dart';
+import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
 
 class UnitConverter extends GetView<UnitConverterController> {
   final Category category;

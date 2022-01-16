@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/category_list/category_list_repository.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/data/model/unit.dart';
+import 'package:tutorial_inicial/app/data/repositories/category_list_repository.dart';
 
 class CategoryListController extends GetxController {
   late List<String> categoryNames = <String>[];
