@@ -5,7 +5,6 @@ import 'package:tutorial_inicial/app/modules/category_list/category_list_control
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/category_tile.dart';
 import 'package:tutorial_inicial/app/pages/info/info.dart';
 
-
 class CategoryList extends GetView<CategoryListController> {
   const CategoryList({Key? key}) : super(key: key);
 
