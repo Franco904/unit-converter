@@ -39,6 +39,9 @@ dependencies:
   intl: ^0.17.0
   flutter_launcher_icons: ^0.9.2
 
+  # State management
+  get: ^4.5.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

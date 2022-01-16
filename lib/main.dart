@@ -1,9 +1,8 @@
-// ignore_for_file: avoid_print, prefer_const_constructors
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:tutorial_inicial/app/welcome/welcome.dart';
+import 'package:get/get.dart';
+import 'package:tutorial_inicial/app/utils/global_bindings.dart';
+import 'app/routes/pages.dart';
+import 'app/routes/routes.dart';
 
 void main() {
   runApp(const UnitConverterApp());
@@ -14,12 +13,12 @@ class UnitConverterApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Unit Converter',
-      home: Center(
-        child: Welcome()
-      ),
+      initialRoute: Routes.WELCOME,
+      initialBinding: GlobalBindings(),
+      getPages: getAppPages(),
     );
   }
 }
