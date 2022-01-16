@@ -15,6 +15,10 @@ class UnitConverter extends GetView<UnitConverterController> {
 
   @override
   Widget build(BuildContext context) {
+    if (!Get.isRegistered<UnitConverterController>()) {
+      Get.put(UnitConverterController());
+    }
+
     return WillPopScope(
       onWillPop: () => onBackPressed(),
       child: Scaffold(

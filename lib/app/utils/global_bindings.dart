@@ -12,6 +12,6 @@ class GlobalBindings extends Bindings {
     Get.put<CategoryDao>(CategoryDao(), permanent: true);
     Get.put<UnitDao>(UnitDao(), permanent: true);
 
-    Get.put<UnitConverterController>(UnitConverterController());
+    Get.lazyPut<UnitConverterController>(() => UnitConverterController());
   }
 }
