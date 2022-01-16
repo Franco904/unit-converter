@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/category_list/category_list.dart';
-import 'package:tutorial_inicial/app/category_list/category_list_controller.dart';
-import 'package:tutorial_inicial/app/info/info.dart';
+import 'package:tutorial_inicial/app/modules/category_list/category_list.dart';
+import 'package:tutorial_inicial/app/modules/category_list/category_list_controller.dart';
+import 'package:tutorial_inicial/app/pages/info/info.dart';
+import 'package:tutorial_inicial/app/pages/welcome/welcome.dart';
 import 'package:tutorial_inicial/app/routes/routes.dart';
-import 'package:tutorial_inicial/app/welcome/welcome.dart';
 
 List<GetPage> getAppPages() {
   return [

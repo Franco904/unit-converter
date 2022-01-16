@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/category_list/category_dao.dart';
-import 'package:tutorial_inicial/app/category_list/unit_dao.dart';
-import 'package:tutorial_inicial/app/unit_converter/unit.dart';
+import 'package:tutorial_inicial/app/data/dao/category_dao.dart';
+import 'package:tutorial_inicial/app/data/dao/unit_dao.dart';
+import 'package:tutorial_inicial/app/data/model/unit.dart';
 
 class CategoryListRepository {
   static CategoryListRepository get instance => Get.find<CategoryListRepository>();
