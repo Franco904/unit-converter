@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/category_list/category.dart';
 import 'package:tutorial_inicial/app/category_list/category_list_controller.dart';
 import 'package:tutorial_inicial/app/category_list/category_tile.dart';
+import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/info/info.dart';
 
 class CategoryList extends GetView<CategoryListController> {

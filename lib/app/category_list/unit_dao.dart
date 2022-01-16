@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/unit_converter/unit.dart';
+import 'package:tutorial_inicial/app/data/model/unit.dart';
 
 class UnitDao {
   static UnitDao get instance => Get.find<UnitDao>();
