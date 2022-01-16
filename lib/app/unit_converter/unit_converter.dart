@@ -15,36 +15,48 @@ class UnitConverter extends GetView<UnitConverterController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
-        body: Padding(
-          padding: EdgeInsets.only(top: 40),
-          child: SingleChildScrollView(
-            child: Form(
-              key: controller.formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text(
-                      'Input ${category.name.toLowerCase()} value',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    return WillPopScope(
+      onWillPop: () => onBackPressed(),
+      child: Scaffold(
+          appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
+          body: Padding(
+            padding: EdgeInsets.only(top: 40),
+            child: SingleChildScrollView(
+              child: Form(
+                key: controller.formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text(
+                        'Input ${category.name.toLowerCase()} value',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  input(context),
-                  arrows(context),
-                  output(context),
-                ],
+                    _buildInput(context),
+                    _buildArrows(context),
+                    _buildOutput(context),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        resizeToAvoidBottomInset: false);
+          resizeToAvoidBottomInset: false),
+    );
   }
 
-  Widget input(BuildContext context) {
+  Future<bool> onBackPressed() async {
+    if (controller.formHasFieldsInitialized()) {
+      controller.clearFields();
+
+      return true;
+    }
+    return true;
+  }
+
+  Widget _buildInput(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -74,7 +86,7 @@ class UnitConverter extends GetView<UnitConverterController> {
     );
   }
 
-  Widget arrows(BuildContext context) {
+  Widget _buildArrows(BuildContext context) {
     return RotatedBox(
       quarterTurns: 1,
       child: Center(
@@ -90,7 +102,7 @@ class UnitConverter extends GetView<UnitConverterController> {
     );
   }
 
-  Widget output(BuildContext context) {
+  Widget _buildOutput(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [

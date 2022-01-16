@@ -12,4 +12,13 @@ class UnitConverterController extends GetxController {
 
   String inputString = '';
   RxString outputString = ''.obs;
+
+  bool formHasFieldsInitialized() {
+    return !(inputString == '' && outputString.value == '' && fromUnit == null && toUnit == null);
+  }
+
+  void clearFields() {
+    inputString = outputString.value = '';
+    fromUnit = toUnit = null;
+  }
 }
