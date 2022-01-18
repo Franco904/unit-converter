@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/core/utils/global_bindings.dart';
+import 'package:tutorial_inicial/app/core/utils/translations.dart';
 import 'app/routes/pages.dart';
 import 'app/routes/routes.dart';
 
@@ -19,6 +20,7 @@ class UnitConverterApp extends StatelessWidget {
       initialRoute: Routes.WELCOME,
       initialBinding: GlobalBindings(),
       getPages: getAppPages(),
+      translations: UnitConverterTranslations(),
     );
   }
 }

@@ -1,0 +1,113 @@
+import 'package:get/get.dart';
+
+class UnitConverterTranslations extends Translations {
+  @override
+  Map<String, Map<String, String>> get keys => {
+    'en_US': {
+      // Welcome
+      'welcome_title1': 'Welcome to',
+      'welcome_title2': 'Unit Converter',
+      'welcome_button': 'Start',
+
+      // Info
+      'info_title': 'Info',
+      'info_text1': 'Last update',
+      'info_text2': 'Developed by',
+      'info_text3': 'With:',
+
+      // CategoryList
+      'categories_title': 'Categories',
+
+      // Categories
+      'category_length': 'Length',
+      'category_area': 'Area',
+      'category_volume': 'Volume',
+      'category_mass': 'Mass',
+      'category_time': 'Time',
+      'category_digital_storage': 'Digital Storage',
+      'category_currency': 'Currency',
+      'category_energy': 'Energy',
+      'category_eletrical_resistance': 'Eletrical Resistance',
+      'category_eletrical_charge': 'Eletrical Charge',
+      'category_voltage': 'Voltage',
+      'category_frequency': 'Frequency',
+      'category_pressure': 'Pressure',
+      'category_temperature': 'Temperature',
+      'category_speed': 'Speed',
+
+      // Unit Converter
+      'converter_title': 'Input a',
+      'converter_text_value': 'value',
+      'converter_input_label': 'Input',
+      'converter_dropdown_label': 'Select a',
+      'converter_output_label': 'Output',
+      'converter_input_validation': 'Please input a convert value',
+      'converter_dropdown_validation': 'Required',
+
+      // Units
+      'unit_millimeter': 'Millimeter',
+      'unit_centimeter': 'Centimeter',
+      'unit_decimeter': 'Decimeter',
+      'unit_meter': 'Meter',
+      'unit_decameter': 'Decameter',
+      'unit_hectometer': 'Hectometer',
+      'unit_kilometer': 'Kilometer',
+      'unit_square_millimeter': 'Square Millimeter',
+      'unit_square_centimeter': 'Square Centimeter',
+      'unit_square_decimeter': 'Square Decimeter',
+      'unit_square meter': 'Square Meter',
+      'unit_square_decameter': 'Square Decameter',
+      'unit_square_hectometer': 'Square Hectometer',
+      'unit_square_kilometer': 'Square Kilometer',
+      'unit_cubic_millimeter': 'Cubic Millimeter',
+      'unit_cubic_centimeter': 'Cubic Centimeter',
+      'unit_cubic_decimeter': 'Cubic Decimeter',
+      'unit_cubic_meter': 'Cubic Meter',
+      'unit_cubic_decameter': 'Cubic Decameter',
+      'unit_cubic_hectometer': 'Cubic Hectometer',
+      'unit_cubic_kilometer': 'Cubic Kilometer',
+      'unit_milligram': 'Milligram',
+      'unit_centigram': 'Centigram',
+      'unit_gram': 'Gram',
+      'unit_kilogram': 'Kilogram',
+      'unit_seconds': 'Seconds',
+      'unit_minutes': 'Minutes',
+      'unit_hours': 'Hours',
+      'unit_bytes': 'Bytes',
+      'unit_kilobytes': 'Kilobytes',
+      'unit_megabytes': 'Megabytes',
+      'unit_gigabytes': 'Gigabytes',
+      'unit_real': 'Real',
+      'unit_dolar': 'Dolar',
+      'unit_euro': 'Euro',
+      'unit_joule': 'Joule',
+      'unit_kilojoule': 'Kilojoule',
+      'unit_megajoule': 'Megajoule',
+      'unit_gigajoule': 'Gigajoule',
+      'unit_milliohms': 'Milliohms',
+      'unit_ohms': 'Ohms',
+      'unit_kiloohms': 'Kiloohms',
+      'unit_nanocoulombs': 'Nanocoulombs',
+      'unit_microcoulombs': 'Microcoulombs',
+      'unit_millicoulombs': 'Millicoulombs',
+      'unit_coulombs': 'Coulombs',
+      'unit_volt': 'Volt',
+      'unit_kilovolt': 'Kilovolt',
+      'unit_megavolt': 'Megavolt',
+      'unit_gigavolt': 'Gigavolt',
+      'unit_hertz': 'Hertz',
+      'unit_kilohertz': 'Kilohertz',
+      'unit_megahertz': 'Megahertz',
+      'unit_gigahertz': 'Gigahertz',
+      'unit_pascal': 'Pascal',
+      'unit_kilopascal': 'Kilopascal',
+      'unit_megapascal': 'Megapascal',
+      'unit_gigapascal': 'Gigapascal',
+      'unit_kelvin': 'Kelvin',
+      'unit_celsius': 'Celsius',
+      'unit_fahrenheit': 'Fahrenheit',
+      'unit_meters_per_second': 'Meters per second',
+      'unit_kilometers_per_hour': 'Kilometers per hour'
+    }
+  };
+}
