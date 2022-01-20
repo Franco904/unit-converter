@@ -20,6 +20,7 @@ class UnitConverterApp extends StatelessWidget {
       initialRoute: Routes.WELCOME,
       initialBinding: GlobalBindings(),
       getPages: getAppPages(),
+      locale: Get.deviceLocale,
       translations: UnitConverterTranslations(),
     );
   }

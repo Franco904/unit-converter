@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
+// import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
 
@@ -19,8 +20,10 @@ class UnitConverter extends GetView<UnitConverterController> {
       Get.put(UnitConverterController());
     }
 
+    // LocaleController localeController = Get.find<LocaleController>();
+
     return WillPopScope(
-      onWillPop: () => onBackPressed(),
+      onWillPop: () => _onBackPressed(),
       child: Scaffold(
           appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
           body: Padding(
@@ -35,7 +38,7 @@ class UnitConverter extends GetView<UnitConverterController> {
                     Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        'Input ${category.name.toLowerCase()} value',
+                        'converter_title'.tr + ' ${category.name.toLowerCase()} ' + 'converter_text_value'.tr,
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -51,11 +54,9 @@ class UnitConverter extends GetView<UnitConverterController> {
     );
   }
 
-  Future<bool> onBackPressed() async {
+  Future<bool> _onBackPressed() async {
     if (controller.formHasFieldsInitialized()) {
       controller.clearFields();
-
-      return true;
     }
     return true;
   }
@@ -67,7 +68,7 @@ class UnitConverter extends GetView<UnitConverterController> {
         TextFormField(
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            labelText: 'Input',
+            labelText: 'converter_input_label'.tr,
             labelStyle: TextStyle(
               color: Colors.grey[600],
             ),
@@ -75,15 +76,15 @@ class UnitConverter extends GetView<UnitConverterController> {
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
           ),
           onChanged: (value) => controller.inputString = value,
-          validator: (value) => value == null || value.isEmpty ? 'Please input a convert value' : null,
+          validator: (value) => value == null || value.isEmpty ? 'converter_input_validation'.tr : null,
         ),
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
             value: controller.fromUnit,
-            hint: Text('Select a ${category.name.toLowerCase()} unit'),
+            hint: Text('converter_dropdown_label'.tr + ' ${category.name.toLowerCase()} ' + 'converter_text_unit'.tr),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
+            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
             onChanged: (newValue) => _updateDropdownInput(newValue),
             items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
       ]),
@@ -112,7 +113,7 @@ class UnitConverter extends GetView<UnitConverterController> {
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         DropdownButtonFormField<String>(
             value: controller.toUnit,
-            hint: Text('Select a ${category.name.toLowerCase()} unit'),
+            hint: Text('converter_dropdown_label'.tr + ' ${category.name.toLowerCase()} ' + 'converter_text_unit'.tr),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
             validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
@@ -123,7 +124,7 @@ class UnitConverter extends GetView<UnitConverterController> {
           child: Obx(() => Text(controller.outputString.value)),
           decoration: InputDecoration(
             hoverColor: Colors.grey[200],
-            labelText: 'Output',
+            labelText: 'converter_output_label'.tr,
             labelStyle: Theme.of(context).textTheme.subtitle1,
             contentPadding: EdgeInsets.only(left: 12),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
