@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tutorial_inicial/app/modules/category_list/category_list_controller.dart';
 
 class LocaleTile extends StatelessWidget {
   final Map locale;
-  final void Function(Locale locale) updateLocale;
+  final Future<void> Function(Locale locale) updateLocale;
 
   const LocaleTile({required this.locale, required this.updateLocale});
 
@@ -15,9 +16,14 @@ class LocaleTile extends StatelessWidget {
         child: InkWell(
           highlightColor: Colors.grey[300],
           splashColor: Colors.grey[350],
-          onTap: () {
+          onTap: () async {
             Get.back();
-            updateLocale(locale['locale']);
+            await updateLocale(locale['locale']);
+
+            if (Get.isRegistered<CategoryListController>()) {
+              Get.delete<CategoryListController>();
+              Get.put(CategoryListController());
+            }
           },
           child: Padding(
             padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 24),

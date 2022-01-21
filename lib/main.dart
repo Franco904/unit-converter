@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/core/utils/global_bindings.dart';
 import 'package:tutorial_inicial/app/core/utils/translations.dart';
 import 'app/routes/pages.dart';
@@ -20,7 +21,7 @@ class UnitConverterApp extends StatelessWidget {
       initialRoute: Routes.WELCOME,
       initialBinding: GlobalBindings(),
       getPages: getAppPages(),
-      locale: Get.deviceLocale,
+      locale: LocaleController.currentLocale ?? LocaleController.deviceLocale,
       translations: UnitConverterTranslations(),
     );
   }

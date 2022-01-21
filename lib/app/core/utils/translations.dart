@@ -156,8 +156,8 @@ class UnitConverterTranslations extends Translations {
 
           // Unit Converter
           'converter_title': 'Introduce un',
-          'converter_text_value': 'valor',
-          'converter_text_unit': 'unidad',
+          'converter_text_value': 'valor de',
+          'converter_text_unit': 'unidad de',
           'converter_input_label': 'Valor de entrada',
           'converter_dropdown_label': 'Selecciona una',
           'converter_output_label': 'Valor convertido',
@@ -268,8 +268,8 @@ class UnitConverterTranslations extends Translations {
 
           // Unit Converter
           'converter_title': 'Insira um',
-          'converter_text_value': 'valor',
-          'converter_text_unit': 'unidade',
+          'converter_text_value': 'valor de',
+          'converter_text_unit': 'unidade de',
           'converter_input_label': 'Valor de entrada',
           'converter_dropdown_label': 'Selecione uma',
           'converter_output_label': 'Valor convertido',

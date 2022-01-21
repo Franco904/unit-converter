@@ -84,7 +84,7 @@ class CategoryList extends GetView<CategoryListController> {
                 child: ListView.builder(
                     itemCount: localeController.locales.length,
                     itemBuilder: (BuildContext context, int i) {
-                      return LocaleTile(locale: localeController.locales[i], updateLocale: _updateLocale);
+                      return LocaleTile(locale: localeController.locales[i], updateLocale: localeController.updateLocale);
                     }),
               ),
             ),
@@ -101,15 +101,5 @@ class CategoryList extends GetView<CategoryListController> {
         ],
       ),
     );
-  }
-
-  void _updateLocale(Locale locale) {
-    Get.back();
-    Future.delayed(Duration(milliseconds: 200), () => Get.updateLocale(locale));
-
-    if (Get.isRegistered<CategoryListController>()) {
-      Get.delete<CategoryListController>();
-      Get.put(CategoryListController());
-    }
   }
 }
