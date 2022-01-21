@@ -217,17 +217,17 @@ class UnitConverter extends GetView<UnitConverterController> {
       case 7:
         // TODO: Como faço para buscar a cotação atualizada das moedas?
 
-        if (controller.fromUnit == 'Real' && controller.toUnit == 'Dolar') {
+        if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_dolar'.tr) {
           outputValue = inputValue / 5.53;
-        } else if (controller.fromUnit == 'Dolar' && controller.toUnit == 'Real') {
+        } else if (controller.fromUnit == 'unit_dolar'.tr && controller.toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 5.53;
-        } else if (controller.fromUnit == 'Real' && controller.toUnit == 'Euro') {
+        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_euro'.tr) {
           outputValue = inputValue / 6.28;
-        } else if (controller.fromUnit == 'Euro' && controller.toUnit == 'Real') {
+        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 6.28;
-        } else if (controller.fromUnit == 'Dolar' && controller.toUnit == 'Euro') {
+        } else if (controller.fromUnit == 'unit_dolar'.tr && controller.toUnit == 'unit_euro'.tr) {
           outputValue = inputValue / 1.13;
-        } else if (controller.fromUnit == 'Euro' && controller.toUnit == 'Dolar') {
+        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_dolar'.tr) {
           outputValue = inputValue * 1.13;
         } else {
           outputValue = inputValue;
@@ -252,17 +252,17 @@ class UnitConverter extends GetView<UnitConverterController> {
 
       // Temperature
       case 14:
-        if (controller.fromUnit == 'Kelvin' && controller.toUnit == 'Celsius') {
+        if (controller.fromUnit == 'unit_kelvin'.tr && controller.toUnit == 'unit_celsius'.tr) {
           outputValue = inputValue - 273;
-        } else if (controller.fromUnit == 'Celsius' && controller.toUnit == 'Kelvin') {
+        } else if (controller.fromUnit == 'unit_celsius'.tr && controller.toUnit == 'unit_kelvin'.tr) {
           outputValue = inputValue + 273;
-        } else if (controller.fromUnit == 'Fahrenheit' && controller.toUnit == 'Celsius') {
+        } else if (controller.fromUnit == 'unit_fahrenheit'.tr && controller.toUnit == 'unit_celsius'.tr) {
           outputValue = (5 * inputValue - 160) / 9;
-        } else if (controller.fromUnit == 'Celsius' && controller.toUnit == 'Fahrenheit') {
+        } else if (controller.fromUnit == 'unit_celsius'.tr && controller.toUnit == 'unit_fahrenheit'.tr) {
           outputValue = (9 * inputValue) / 5 + 32;
-        } else if (controller.fromUnit == 'Fahrenheit' && controller.toUnit == 'Kelvin') {
+        } else if (controller.fromUnit == 'unit_fahrenheit'.tr && controller.toUnit == 'unit_kelvin'.tr) {
           outputValue = (5 * inputValue - 160) / 9 + 273;
-        } else if (controller.fromUnit == 'Kelvin' && controller.toUnit == 'Fahrenheit') {
+        } else if (controller.fromUnit == 'unit_kelvin'.tr && controller.toUnit == 'unit_fahrenheit'.tr) {
           outputValue = (9 * inputValue - 2457) / 5 + 32;
         } else {
           outputValue = inputValue;
