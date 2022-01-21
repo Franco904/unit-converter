@@ -54,8 +54,6 @@ class CategoryList extends GetView<CategoryListController> {
     );
   }
 
-  void fetchCategoriesLocale() {}
-
   void _showSelectLanguageDialog(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 

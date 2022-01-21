@@ -246,7 +246,7 @@ class UnitConverterTranslations extends Translations {
           // CategoryList
           'categories_title': 'Categorias',
           'categories_dialog_title': 'Alterar idioma',
-          'categories_dialog_text': 'Selecione o idioma com o qual você deseja utilizar o aplicativo',
+          'categories_dialog_text': 'Selecione o idioma que você deseja utilizar no aplicativo',
           'categories_dialog_button': 'Cancelar',
 
           // Categories

@@ -66,18 +66,17 @@ class UnitConverter extends GetView<UnitConverterController> {
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         TextFormField(
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            labelText: 'converter_input_label'.tr,
-            labelStyle: TextStyle(
-              color: Colors.grey[600],
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'converter_input_label'.tr,
+              labelStyle: TextStyle(
+                color: Colors.grey[600],
+              ),
+              contentPadding: EdgeInsets.only(left: 12),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
             ),
-            contentPadding: EdgeInsets.only(left: 12),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-          ),
-          onChanged: (value) => controller.inputString = value,
-          validator: (value) => value == null || value.isEmpty ? 'converter_input_validation'.tr : null,
-        ),
+            onChanged: (value) => controller.inputString = value,
+            validator: (value) => value == null || value.isEmpty ? 'converter_input_validation'.tr : null),
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
             value: controller.fromUnit,
