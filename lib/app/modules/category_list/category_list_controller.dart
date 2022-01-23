@@ -8,7 +8,7 @@ class CategoryListController extends GetxController {
   late List<String> categoryNames = <String>[];
   late List<IconData> categoryIcons = <IconData>[];
 
-  final RxList<Category> categories = <Category>[].obs;
+  final List<Category> categories = <Category>[];
 
   @override
   void onInit() {
