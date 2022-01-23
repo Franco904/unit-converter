@@ -8,12 +8,12 @@ import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
 import 'package:tutorial_inicial/app/utils/strings.dart';
 
-class UnitConverter extends GetView<UnitConverterController> {
+class UnitConverterPage extends GetView<UnitConverterController> {
   final LocaleController localeController = Get.find<LocaleController>();
 
   final Category category;
 
-  UnitConverter({required this.category});
+  UnitConverterPage({required this.category});
 
   // TODO: HintTooltip para alertar a função do botão converter
 
