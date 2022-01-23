@@ -6,9 +6,11 @@ import 'package:tutorial_inicial/app/core/utils/global_bindings.dart';
 import 'package:tutorial_inicial/app/core/utils/translations.dart';
 import 'package:tutorial_inicial/app/routes/pages.dart';
 import 'package:tutorial_inicial/app/routes/routes.dart';
+import 'package:tutorial_inicial/app/utils/device.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await loadDeviceOrientation();
   await initialConfig().then((_) => runApp(UnitConverterApp()));
 }
 

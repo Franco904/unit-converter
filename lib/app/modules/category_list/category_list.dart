@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
-import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/category_list/category_list_controller.dart';
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/category_tile.dart';
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/locale_tile.dart';
@@ -33,20 +32,11 @@ class CategoryList extends GetView<CategoryListController> {
           },
         ),
       ]),
-      body: OrientationBuilder(
-        builder: (context, orientation) => orientation == Orientation.portrait
-            ? ListView.builder(
-                itemCount: controller.categories.length,
-                itemBuilder: (BuildContext context, int i) {
-                  return Padding(padding: EdgeInsets.only(left: 0), child: CategoryTile(category: controller.categories[i]));
-                })
-            : GridView.count(
-                crossAxisCount: 2,
-                childAspectRatio: 5,
-                children: controller.categories.map((Category c) {
-                  return Padding(padding: EdgeInsets.only(left: 40, right: 30), child: CategoryTile(category: c));
-                }).toList()),
-      ),
+      body: ListView.builder(
+          itemCount: controller.categories.length,
+          itemBuilder: (BuildContext context, int i) {
+            return Padding(padding: EdgeInsets.only(left: 0), child: CategoryTile(category: controller.categories[i]));
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => Info()),
         child: Icon(Icons.info_outline_rounded),
