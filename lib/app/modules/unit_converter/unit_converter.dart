@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
+import 'package:tutorial_inicial/app/utils/strings.dart';
 
 class UnitConverter extends GetView<UnitConverterController> {
   final LocaleController localeController = Get.find<LocaleController>();
@@ -22,11 +23,8 @@ class UnitConverter extends GetView<UnitConverterController> {
       Get.put(UnitConverterController());
     }
 
-    final englishInputString = 'converter_title'.tr + ' ${category.name.toLowerCase()} ' + 'converter_text_value'.tr;
-    final elseInputString = 'converter_title'.tr + ' ' + 'converter_text_value'.tr + ' ${category.name.toLowerCase()}';
-
-    final englishDropdownString = 'converter_dropdown_label'.tr + ' ${category.name.toLowerCase()} ' + 'converter_text_unit'.tr;
-    final elseDropdownString = 'converter_dropdown_label'.tr + ' ' + 'converter_text_unit'.tr + ' ${category.name.toLowerCase()}';
+    final englishInputString = converterStrings('english_input_string', category);
+    final elseInputString = converterStrings('else_input_string', category);
 
     return WillPopScope(
       onWillPop: () => _onBackPressed(),
@@ -44,13 +42,15 @@ class UnitConverter extends GetView<UnitConverterController> {
                     Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        localeController.currentLocale == localeController.locales[0]['locale'] ? englishInputString : elseInputString,
+                        localeController.currentLocale.value == localeController.locales[0]['locale'].toString()
+                            ? englishInputString
+                            : elseInputString,
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    _buildInput(englishDropdownString, elseDropdownString),
+                    _buildInputFields(),
                     _buildArrows(),
-                    _buildOutput(englishDropdownString, elseDropdownString),
+                    _buildOutputFields(),
                   ],
                 ),
               ),
@@ -67,7 +67,7 @@ class UnitConverter extends GetView<UnitConverterController> {
     return true;
   }
 
-  Widget _buildInput(String englishDropdownString, String elseDropdownString) {
+  Widget _buildInputFields() {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -86,7 +86,7 @@ class UnitConverter extends GetView<UnitConverterController> {
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
             value: controller.fromUnit,
-            hint: Text(localeController.currentLocale == localeController.locales[0]['locale'] ? englishDropdownString : elseDropdownString),
+            hint: Text(category.name),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
             validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
@@ -112,15 +112,13 @@ class UnitConverter extends GetView<UnitConverterController> {
     );
   }
 
-  Widget _buildOutput(String englishDropdownString, String elseDropdownString) {
+  Widget _buildOutputFields() {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         DropdownButtonFormField<String>(
             value: controller.toUnit,
-            hint: Text(localeController.currentLocale.value == localeController.locales[0]['locale'].toString()
-                ? englishDropdownString
-                : elseDropdownString),
+            hint: Text(category.name),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
             validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,

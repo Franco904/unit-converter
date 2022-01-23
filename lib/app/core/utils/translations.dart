@@ -43,9 +43,7 @@ class UnitConverterTranslations extends Translations {
           // Unit Converter
           'converter_title': 'Input a',
           'converter_text_value': 'value',
-          'converter_text_unit': 'unit',
           'converter_input_label': 'Input',
-          'converter_dropdown_label': 'Select a',
           'converter_output_label': 'Output',
           'converter_input_validation': 'Please input a convert value',
           'converter_dropdown_validation': 'Required',
@@ -155,9 +153,7 @@ class UnitConverterTranslations extends Translations {
           // Unit Converter
           'converter_title': 'Introduce un',
           'converter_text_value': 'valor de',
-          'converter_text_unit': 'unidad de',
           'converter_input_label': 'Valor de entrada',
-          'converter_dropdown_label': 'Selecciona una',
           'converter_output_label': 'Valor convertido',
           'converter_input_validation': 'Por favor introduce un valor para convertir',
           'converter_dropdown_validation': 'Campo obligatorio',
@@ -267,9 +263,7 @@ class UnitConverterTranslations extends Translations {
           // Unit Converter
           'converter_title': 'Insira um',
           'converter_text_value': 'valor de',
-          'converter_text_unit': 'unidade de',
           'converter_input_label': 'Valor de entrada',
-          'converter_dropdown_label': 'Selecione uma',
           'converter_output_label': 'Valor convertido',
           'converter_input_validation': 'Por favor insira um valor para converter',
           'converter_dropdown_validation': 'Campo obrigatório',
