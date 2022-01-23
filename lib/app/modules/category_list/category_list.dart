@@ -18,6 +18,7 @@ class CategoryList extends GetView<CategoryListController> {
     if (!Get.isRegistered<CategoryListController>()) {
       Get.put(CategoryListController());
     } else {
+      // Ver se existe uma lógica melhor para atualizar as categorias traduzidas
       Get.delete<CategoryListController>();
       Get.put(CategoryListController());
     }

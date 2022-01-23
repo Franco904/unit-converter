@@ -15,6 +15,6 @@ class GlobalBindings extends Bindings {
 
     Get.put<LocaleController>(LocaleController(), permanent: true);
 
-    Get.lazyPut<UnitConverterController>(() => UnitConverterController());
+    Get.lazyPut<UnitConverterController>(() => UnitConverterController(), fenix: true);
   }
 }
