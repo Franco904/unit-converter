@@ -17,7 +17,7 @@ class Welcome extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Welcome to',
+                  'welcome_title'.tr,
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
               ),
@@ -25,7 +25,7 @@ class Welcome extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Unit Converter',
+                  'app_title'.tr,
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.cyan),
                 ),
               ),
@@ -38,7 +38,7 @@ class Welcome extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(top: 10, right: 30, bottom: 10, left: 30),
                     child: Text(
-                      'Start',
+                      'welcome_button'.tr,
                       style: TextStyle(color: Colors.white),
                     ),
                   )),

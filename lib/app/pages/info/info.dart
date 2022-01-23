@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Info extends StatelessWidget {
   const Info({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class Info extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Info'),
+        title: Text('info_title'.tr),
         centerTitle: true,
         backgroundColor: Colors.cyan,
       ),
@@ -24,17 +25,17 @@ class Info extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Unit Converter',
+                      'app_title'.tr,
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.cyan),
                     ),
                     SizedBox(height: 24),
-                    Text('Last update: 18/11/2021'),
+                    Text('info_text1'.tr + ': 18/11/2021'),
                     SizedBox(height: 24),
-                    Text('Developed by'),
+                    Text('info_text2'.tr),
                     SizedBox(height: 8),
                     Text('Franco Saravia Tavares'),
                     SizedBox(height: 24),
-                    Text('With:'),
+                    Text('info_text3'.tr),
                     SizedBox(height: 12),
                     Image.asset('lib/assets/images/flutter_logo_grey.png')
                   ],

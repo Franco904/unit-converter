@@ -3,13 +3,17 @@ import 'dart:math';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
+import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
+import 'package:tutorial_inicial/app/utils/strings.dart';
 
 class UnitConverter extends GetView<UnitConverterController> {
+  final LocaleController localeController = Get.find<LocaleController>();
+
   final Category category;
 
-  const UnitConverter({required this.category});
+  UnitConverter({required this.category});
 
   // TODO: HintTooltip para alertar a função do botão converter
 
@@ -19,8 +23,11 @@ class UnitConverter extends GetView<UnitConverterController> {
       Get.put(UnitConverterController());
     }
 
+    final englishInputString = converterStrings('english_input_string', category);
+    final elseInputString = converterStrings('else_input_string', category);
+
     return WillPopScope(
-      onWillPop: () => onBackPressed(),
+      onWillPop: () => _onBackPressed(),
       child: Scaffold(
           appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
           body: Padding(
@@ -35,13 +42,15 @@ class UnitConverter extends GetView<UnitConverterController> {
                     Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        'Input ${category.name.toLowerCase()} value',
+                        localeController.currentLocale.value == localeController.locales[0]['locale'].toString()
+                            ? englishInputString
+                            : elseInputString,
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    _buildInput(context),
-                    _buildArrows(context),
-                    _buildOutput(context),
+                    _buildInputFields(),
+                    _buildArrows(),
+                    _buildOutputFields(),
                   ],
                 ),
               ),
@@ -51,46 +60,43 @@ class UnitConverter extends GetView<UnitConverterController> {
     );
   }
 
-  Future<bool> onBackPressed() async {
+  Future<bool> _onBackPressed() async {
     if (controller.formHasFieldsInitialized()) {
       controller.clearFields();
-
-      return true;
     }
     return true;
   }
 
-  Widget _buildInput(BuildContext context) {
+  Widget _buildInputFields() {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         TextFormField(
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            labelText: 'Input',
-            labelStyle: TextStyle(
-              color: Colors.grey[600],
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'converter_input_label'.tr,
+              labelStyle: TextStyle(
+                color: Colors.grey[600],
+              ),
+              contentPadding: EdgeInsets.only(left: 12),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
             ),
-            contentPadding: EdgeInsets.only(left: 12),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-          ),
-          onChanged: (value) => controller.inputString = value,
-          validator: (value) => value == null || value.isEmpty ? 'Please input a convert value' : null,
-        ),
+            onChanged: (value) => controller.inputString = value,
+            validator: (value) => value == null || value.isEmpty ? 'converter_input_validation'.tr : null),
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
             value: controller.fromUnit,
-            hint: Text('Select a ${category.name.toLowerCase()} unit'),
+            hint: Text(category.name),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
+            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
             onChanged: (newValue) => _updateDropdownInput(newValue),
             items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
       ]),
     );
   }
 
-  Widget _buildArrows(BuildContext context) {
+  Widget _buildArrows() {
     return RotatedBox(
       quarterTurns: 1,
       child: Center(
@@ -106,16 +112,16 @@ class UnitConverter extends GetView<UnitConverterController> {
     );
   }
 
-  Widget _buildOutput(BuildContext context) {
+  Widget _buildOutputFields() {
     return Padding(
       padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         DropdownButtonFormField<String>(
             value: controller.toUnit,
-            hint: Text('Select a ${category.name.toLowerCase()} unit'),
+            hint: Text(category.name),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'Required' : null,
+            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
             onChanged: (newValue) => _updateDropdownOutput(newValue),
             items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
         SizedBox(height: 16),
@@ -123,8 +129,8 @@ class UnitConverter extends GetView<UnitConverterController> {
           child: Obx(() => Text(controller.outputString.value)),
           decoration: InputDecoration(
             hoverColor: Colors.grey[200],
-            labelText: 'Output',
-            labelStyle: Theme.of(context).textTheme.subtitle1,
+            labelText: 'converter_output_label'.tr,
+            labelStyle: Theme.of(Get.context!).textTheme.subtitle1,
             contentPadding: EdgeInsets.only(left: 12),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
           ),
@@ -211,17 +217,17 @@ class UnitConverter extends GetView<UnitConverterController> {
       case 7:
         // TODO: Como faço para buscar a cotação atualizada das moedas?
 
-        if (controller.fromUnit == 'Real' && controller.toUnit == 'Dolar') {
+        if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_dolar'.tr) {
           outputValue = inputValue / 5.53;
-        } else if (controller.fromUnit == 'Dolar' && controller.toUnit == 'Real') {
+        } else if (controller.fromUnit == 'unit_dolar'.tr && controller.toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 5.53;
-        } else if (controller.fromUnit == 'Real' && controller.toUnit == 'Euro') {
+        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_euro'.tr) {
           outputValue = inputValue / 6.28;
-        } else if (controller.fromUnit == 'Euro' && controller.toUnit == 'Real') {
+        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 6.28;
-        } else if (controller.fromUnit == 'Dolar' && controller.toUnit == 'Euro') {
+        } else if (controller.fromUnit == 'unit_dolar'.tr && controller.toUnit == 'unit_euro'.tr) {
           outputValue = inputValue / 1.13;
-        } else if (controller.fromUnit == 'Euro' && controller.toUnit == 'Dolar') {
+        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_dolar'.tr) {
           outputValue = inputValue * 1.13;
         } else {
           outputValue = inputValue;
@@ -246,17 +252,17 @@ class UnitConverter extends GetView<UnitConverterController> {
 
       // Temperature
       case 14:
-        if (controller.fromUnit == 'Kelvin' && controller.toUnit == 'Celsius') {
+        if (controller.fromUnit == 'unit_kelvin'.tr && controller.toUnit == 'unit_celsius'.tr) {
           outputValue = inputValue - 273;
-        } else if (controller.fromUnit == 'Celsius' && controller.toUnit == 'Kelvin') {
+        } else if (controller.fromUnit == 'unit_celsius'.tr && controller.toUnit == 'unit_kelvin'.tr) {
           outputValue = inputValue + 273;
-        } else if (controller.fromUnit == 'Fahrenheit' && controller.toUnit == 'Celsius') {
+        } else if (controller.fromUnit == 'unit_fahrenheit'.tr && controller.toUnit == 'unit_celsius'.tr) {
           outputValue = (5 * inputValue - 160) / 9;
-        } else if (controller.fromUnit == 'Celsius' && controller.toUnit == 'Fahrenheit') {
+        } else if (controller.fromUnit == 'unit_celsius'.tr && controller.toUnit == 'unit_fahrenheit'.tr) {
           outputValue = (9 * inputValue) / 5 + 32;
-        } else if (controller.fromUnit == 'Fahrenheit' && controller.toUnit == 'Kelvin') {
+        } else if (controller.fromUnit == 'unit_fahrenheit'.tr && controller.toUnit == 'unit_kelvin'.tr) {
           outputValue = (5 * inputValue - 160) / 9 + 273;
-        } else if (controller.fromUnit == 'Kelvin' && controller.toUnit == 'Fahrenheit') {
+        } else if (controller.fromUnit == 'unit_kelvin'.tr && controller.toUnit == 'unit_fahrenheit'.tr) {
           outputValue = (9 * inputValue - 2457) / 5 + 32;
         } else {
           outputValue = inputValue;

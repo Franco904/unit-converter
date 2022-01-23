@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/data/dao/category_dao.dart';
 import 'package:tutorial_inicial/app/data/dao/unit_dao.dart';
 import 'package:tutorial_inicial/app/data/repositories/category_list_repository.dart';
@@ -12,6 +13,8 @@ class GlobalBindings extends Bindings {
 
     Get.put<CategoryListRepository>(CategoryListRepository(), permanent: true);
 
-    Get.lazyPut<UnitConverterController>(() => UnitConverterController());
+    Get.put<LocaleController>(LocaleController(), permanent: true);
+
+    Get.lazyPut<UnitConverterController>(() => UnitConverterController(), fenix: true);
   }
 }

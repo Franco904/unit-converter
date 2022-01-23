@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/data/model/category.dart';
-import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter.dart';
+import 'package:tutorial_inicial/app/modules/category_list/category_list_controller.dart';
 
-class CategoryTile extends StatelessWidget {
-  final Category category;
+class LocaleTile extends StatelessWidget {
+  final Map locale;
+  final Future<void> Function(Locale locale) updateLocale;
 
-  const CategoryTile({required this.category});
+  const LocaleTile({required this.locale, required this.updateLocale});
 
-  // Monta cada uma das opções de categorias
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,16 +15,24 @@ class CategoryTile extends StatelessWidget {
       child: InkWell(
         highlightColor: Colors.grey[300],
         splashColor: Colors.grey[350],
-        onTap: () => Get.to(() => UnitConverter(category: category)),
+        onTap: () async {
+          Get.back();
+          await updateLocale(locale['locale']);
+
+          if (Get.isRegistered<CategoryListController>()) {
+            Get.delete<CategoryListController>();
+            Get.put(CategoryListController());
+          }
+        },
         child: Padding(
           padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 24),
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Center(child: Icon(category.icon, size: 25)),
+            Center(child: Icon(Icons.language_rounded, size: 25)),
             Center(
               child: Padding(
                 padding: EdgeInsets.only(left: 20),
                 child: Text(
-                  category.name,
+                  '${locale['name']}',
                   style: TextStyle(fontSize: 16),
                 ),
               ),

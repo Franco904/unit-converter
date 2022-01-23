@@ -11,7 +11,8 @@ List<GetPage> getAppPages() {
     GetPage<void>(name: Routes.WELCOME, page: () => Welcome()),
 
     // CategoryList
-    GetPage<void>(name: Routes.CATEGORY, page: () => CategoryList(), binding: BindingsBuilder(() => Get.lazyPut(() => CategoryListController()))),
+    GetPage<void>(
+        name: Routes.CATEGORY, page: () => CategoryList(), binding: BindingsBuilder(() => Get.lazyPut(() => CategoryListController(), fenix: true))),
 
     // Info
     GetPage<void>(name: Routes.INFO, page: () => Info()),
