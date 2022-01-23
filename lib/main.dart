@@ -32,9 +32,7 @@ class UnitConverterApp extends StatelessWidget {
       locale: localeStorage.currentLocale,
       translations: UnitConverterTranslations(),
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle.light
-        ),   
+        appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
       ),
     );
   }
