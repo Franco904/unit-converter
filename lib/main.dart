@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/core/services/locale_service.dart';
 import 'package:tutorial_inicial/app/core/utils/global_bindings.dart';
@@ -30,6 +31,11 @@ class UnitConverterApp extends StatelessWidget {
       getPages: getAppPages(),
       locale: localeStorage.currentLocale,
       translations: UnitConverterTranslations(),
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.light
+        ),   
+      ),
     );
   }
 }
