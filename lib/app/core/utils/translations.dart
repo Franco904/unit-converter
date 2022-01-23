@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
 class UnitConverterTranslations extends Translations {
-  // As strings marcadas com (*) tem a mesma tradução para os 3 idiomas. Depois de decidido o que fazer, vou tirar os comentários
-
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
@@ -193,17 +191,17 @@ class UnitConverterTranslations extends Translations {
           'unit_seconds': 'Segundos',
           'unit_minutes': 'Minutos',
           'unit_hours': 'Horas',
-          'unit_bytes': 'Bytes', // (*)
-          'unit_kilobytes': 'Kilobytes', // (*)
-          'unit_megabytes': 'Megabytes', // (*)
-          'unit_gigabytes': 'Gigabytes', // (*)
-          'unit_real': 'Real', // (*)
+          'unit_bytes': 'Bytes',
+          'unit_kilobytes': 'Kilobytes',
+          'unit_megabytes': 'Megabytes',
+          'unit_gigabytes': 'Gigabytes',
+          'unit_real': 'Real',
           'unit_dolar': 'Dólar',
-          'unit_euro': 'Euro', // (*)
-          'unit_joule': 'Joule', // (*)
-          'unit_kilojoule': 'Kilojoule', // (*)
-          'unit_megajoule': 'Megajoule', // (*)
-          'unit_gigajoule': 'Gigajoule', // (*)
+          'unit_euro': 'Euro',
+          'unit_joule': 'Joule',
+          'unit_kilojoule': 'Kilojoule',
+          'unit_megajoule': 'Megajoule',
+          'unit_gigajoule': 'Gigajoule',
           'unit_milliohms': 'Miliohmio',
           'unit_ohms': 'Ohmio',
           'unit_kiloohms': 'Kiloohmio',
@@ -215,17 +213,17 @@ class UnitConverterTranslations extends Translations {
           'unit_kilovolt': 'Kilovoltio',
           'unit_megavolt': 'Megavoltio',
           'unit_gigavolt': 'Gigavoltio',
-          'unit_hertz': 'Hertz', // (*)
-          'unit_kilohertz': 'Kilohertz', // (*)
-          'unit_megahertz': 'Megahertz', // (*)
-          'unit_gigahertz': 'Gigahertz', // (*)
-          'unit_pascal': 'Pascal', // (*)
-          'unit_kilopascal': 'Kilopascal', // (*)
-          'unit_megapascal': 'Megapascal', // (*)
-          'unit_gigapascal': 'Gigapascal', // (*)
-          'unit_kelvin': 'Kelvin', // (*)
-          'unit_celsius': 'Celsius', // (*)
-          'unit_fahrenheit': 'Fahrenheit', // (*)
+          'unit_hertz': 'Hertz',
+          'unit_kilohertz': 'Kilohertz',
+          'unit_megahertz': 'Megahertz',
+          'unit_gigahertz': 'Gigahertz',
+          'unit_pascal': 'Pascal',
+          'unit_kilopascal': 'Kilopascal',
+          'unit_megapascal': 'Megapascal',
+          'unit_gigapascal': 'Gigapascal',
+          'unit_kelvin': 'Kelvin',
+          'unit_celsius': 'Celsius',
+          'unit_fahrenheit': 'Fahrenheit',
           'unit_meters_per_second': 'Metros por segundo',
           'unit_kilometers_per_hour': 'Kilómetros por hora'
         },
@@ -305,17 +303,17 @@ class UnitConverterTranslations extends Translations {
           'unit_seconds': 'Segundos',
           'unit_minutes': 'Minutos',
           'unit_hours': 'Horas',
-          'unit_bytes': 'Bytes', // (*)
-          'unit_kilobytes': 'Kilobytes', // (*)
-          'unit_megabytes': 'Megabytes', // (*)
-          'unit_gigabytes': 'Gigabytes', // (*)
-          'unit_real': 'Real', // (*)
+          'unit_bytes': 'Bytes',
+          'unit_kilobytes': 'Kilobytes',
+          'unit_megabytes': 'Megabytes',
+          'unit_gigabytes': 'Gigabytes',
+          'unit_real': 'Real',
           'unit_dolar': 'Dólar',
-          'unit_euro': 'Euro', // (*)
-          'unit_joule': 'Joule', // (*)
-          'unit_kilojoule': 'Kilojoule', // (*)
-          'unit_megajoule': 'Megajoule', // (*)
-          'unit_gigajoule': 'Gigajoule', // (*)
+          'unit_euro': 'Euro',
+          'unit_joule': 'Joule',
+          'unit_kilojoule': 'Kilojoule',
+          'unit_megajoule': 'Megajoule',
+          'unit_gigajoule': 'Gigajoule',
           'unit_milliohms': 'Miliohms',
           'unit_ohms': 'Ohms',
           'unit_kiloohms': 'Quiloohms',
@@ -327,17 +325,17 @@ class UnitConverterTranslations extends Translations {
           'unit_kilovolt': 'Quilovolt',
           'unit_megavolt': 'Megavolt',
           'unit_gigavolt': 'Gigavolt',
-          'unit_hertz': 'Hertz', // (*)
-          'unit_kilohertz': 'Quilohertz', // (*)
-          'unit_megahertz': 'Megahertz', // (*)
-          'unit_gigahertz': 'Gigahertz', // (*)
-          'unit_pascal': 'Pascal', // (*)
-          'unit_kilopascal': 'Quilopascal', // (*)
-          'unit_megapascal': 'Megapascal', // (*)
-          'unit_gigapascal': 'Gigapascal', // (*)
-          'unit_kelvin': 'Kelvin', // (*)
-          'unit_celsius': 'Celsius', // (*)
-          'unit_fahrenheit': 'Fahrenheit', // (*)
+          'unit_hertz': 'Hertz',
+          'unit_kilohertz': 'Quilohertz',
+          'unit_megahertz': 'Megahertz',
+          'unit_gigahertz': 'Gigahertz',
+          'unit_pascal': 'Pascal',
+          'unit_kilopascal': 'Quilopascal',
+          'unit_megapascal': 'Megapascal',
+          'unit_gigapascal': 'Gigapascal',
+          'unit_kelvin': 'Kelvin',
+          'unit_celsius': 'Celsius',
+          'unit_fahrenheit': 'Fahrenheit',
           'unit_meters_per_second': 'Metros por segundo',
           'unit_kilometers_per_hour': 'Quilômetros por hora'
         }

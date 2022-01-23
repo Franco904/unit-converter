@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tutorial_inicial/app/core/services/locale_service.dart';
 
 class LocaleController extends GetxController {
-  static final Locale? deviceLocale = Get.deviceLocale;
-  static Locale? currentLocale;
+  final LocaleService localeStorage = Get.find<LocaleService>();
+  final RxString currentLocale = Get.locale.toString().obs;
 
   final List<Map> locales = [
     {'name': 'English', 'locale': Locale('en', 'US')},
@@ -13,8 +14,14 @@ class LocaleController extends GetxController {
 
   Future<void> updateLocale(Locale locale) async {
     Future.delayed(Duration(milliseconds: 200), () {
-      currentLocale = locale;
+      // Atualiza locale app
       Get.updateLocale(locale);
+
+      // Atualiza locale variable
+      currentLocale.value = Get.locale!.toString();
+
+      // Atualiza locale storage
+      localeStorage.write(Get.locale!);
     });
   }
 }

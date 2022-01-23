@@ -44,7 +44,7 @@ class UnitConverter extends GetView<UnitConverterController> {
                     Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        LocaleController.currentLocale == localeController.locales[0]['locale'] ? englishInputString : elseInputString,
+                        localeController.currentLocale == localeController.locales[0]['locale'] ? englishInputString : elseInputString,
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -86,7 +86,7 @@ class UnitConverter extends GetView<UnitConverterController> {
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
             value: controller.fromUnit,
-            hint: Text(LocaleController.currentLocale == localeController.locales[0]['locale'] ? englishDropdownString : elseDropdownString),
+            hint: Text(localeController.currentLocale == localeController.locales[0]['locale'] ? englishDropdownString : elseDropdownString),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
             validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
@@ -118,7 +118,9 @@ class UnitConverter extends GetView<UnitConverterController> {
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         DropdownButtonFormField<String>(
             value: controller.toUnit,
-            hint: Text(LocaleController.currentLocale == localeController.locales[0]['locale'] ? englishDropdownString : elseDropdownString),
+            hint: Text(localeController.currentLocale.value == localeController.locales[0]['locale'].toString()
+                ? englishDropdownString
+                : elseDropdownString),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
             validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
