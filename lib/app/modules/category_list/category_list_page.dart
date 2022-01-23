@@ -4,13 +4,13 @@ import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/modules/category_list/category_list_controller.dart';
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/category_tile.dart';
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/locale_tile.dart';
-import 'package:tutorial_inicial/app/pages/info/info.dart';
+import 'package:tutorial_inicial/app/pages/info/info_page.dart';
 import 'package:tutorial_inicial/app/utils/device.dart';
 
-class CategoryList extends GetView<CategoryListController> {
+class CategoryListPage extends GetView<CategoryListController> {
   final LocaleController localeController = Get.find<LocaleController>();
 
-  CategoryList({Key? key}) : super(key: key);
+  CategoryListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class CategoryList extends GetView<CategoryListController> {
             return Padding(padding: EdgeInsets.only(left: 0), child: CategoryTile(category: controller.categories[i]));
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => Info()),
+        onPressed: () => Get.to(() => InfoPage()),
         child: Icon(Icons.info_outline_rounded),
         backgroundColor: Colors.cyan,
       ),

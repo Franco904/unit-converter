@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/modules/category_list/category_list.dart';
+import 'package:tutorial_inicial/app/modules/category_list/category_list_page.dart';
 
-class Welcome extends StatelessWidget {
-  const Welcome({Key? key}) : super(key: key);
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class Welcome extends StatelessWidget {
               SizedBox(height: 300, width: 300),
               SizedBox(height: 32),
               ElevatedButton(
-                  onPressed: () => Get.off(() => CategoryList()),
+                  onPressed: () => Get.off(() => CategoryListPage()),
                   style: ElevatedButton.styleFrom(primary: Colors.cyan[600], textStyle: TextStyle(fontSize: 18)),
                   child: Padding(
                     padding: EdgeInsets.only(top: 10, right: 30, bottom: 10, left: 30),
