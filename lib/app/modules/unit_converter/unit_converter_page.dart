@@ -11,6 +11,7 @@ import 'package:tutorial_inicial/app/utils/strings.dart';
 class UnitConverterPage extends GetView<UnitConverterController> {
   final LocaleController localeController = Get.find<LocaleController>();
 
+  final formKey = GlobalKey<FormState>();
   final Category category;
 
   UnitConverterPage({required this.category});
@@ -34,7 +35,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
             padding: EdgeInsets.only(top: 40),
             child: SingleChildScrollView(
               child: Form(
-                key: controller.formKey,
+                key: formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,14 +83,14 @@ class UnitConverterPage extends GetView<UnitConverterController> {
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
             ),
             onChanged: (value) => controller.inputString = value,
-            validator: (value) => value == null || value.isEmpty ? 'converter_input_validation'.tr : null),
+            validator: (value) => value == null || value.isEmpty ? 'converter_field_validation'.tr : null),
         SizedBox(height: 16),
         DropdownButtonFormField<String>(
             value: controller.fromUnit,
             hint: Text(category.name),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
+            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
             onChanged: (newValue) => _updateDropdownInput(newValue),
             items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
       ]),
@@ -101,7 +102,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       quarterTurns: 1,
       child: Center(
         child: IconButton(
-          onPressed: () => _onConvertPressed(controller.formKey),
+          onPressed: () => _onConvertPressed(formKey),
           icon: Icon(
             Icons.compare_arrows_rounded,
             color: Colors.cyan[600],
@@ -121,7 +122,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
             hint: Text(category.name),
             icon: Icon(Icons.arrow_drop_down),
             decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
+            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
             onChanged: (newValue) => _updateDropdownOutput(newValue),
             items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
         SizedBox(height: 16),

@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UnitConverterController extends GetxController {
-  final formKey = GlobalKey<FormState>();
-
   String? fromUnit; // dropdownInput unit name
   String? toUnit; // dropdownOutput unit name
 
