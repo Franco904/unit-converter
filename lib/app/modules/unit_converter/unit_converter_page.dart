@@ -11,6 +11,7 @@ import 'package:tutorial_inicial/app/utils/strings.dart';
 class UnitConverterPage extends GetView<UnitConverterController> {
   final LocaleController localeController = Get.find<LocaleController>();
 
+  final formKey = GlobalKey<FormState>();
   final Category category;
 
   UnitConverterPage({required this.category});
@@ -34,7 +35,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
             padding: EdgeInsets.only(top: 40),
             child: SingleChildScrollView(
               child: Form(
-                key: controller.formKey,
+                key: formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +102,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       quarterTurns: 1,
       child: Center(
         child: IconButton(
-          onPressed: () => _onConvertPressed(controller.formKey),
+          onPressed: () => _onConvertPressed(formKey),
           icon: Icon(
             Icons.compare_arrows_rounded,
             color: Colors.cyan[600],
