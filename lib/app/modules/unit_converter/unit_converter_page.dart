@@ -310,7 +310,8 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       default:
         print('Unit not found.');
     }
-    // TODO: Como imprimir output com separação de casas decimais?
+    // TODO: Imprimir output com separação de casas decimais
+
     // var formatter = NumberFormat('#,##,000');
 
     controller.outputString.value = outputValue.toString();

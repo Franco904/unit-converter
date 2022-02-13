@@ -68,16 +68,15 @@ class CategoryListPage extends GetView<CategoryListController> {
             Divider(height: 1, thickness: 1),
             Flexible(
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: 165),
-                child: SizedBox(
-                  width: double.maxFinite,
-                  child: ListView.builder(
-                    itemCount: localeController.locales.length,
-                    itemBuilder: (BuildContext context, int i) {
-                      return LocaleTile(locale: localeController.locales[i], updateLocale: localeController.updateLocale);
-                    }),
-                )
-              ),
+                  constraints: BoxConstraints(maxHeight: 165),
+                  child: SizedBox(
+                    width: double.maxFinite,
+                    child: ListView.builder(
+                        itemCount: localeController.locales.length,
+                        itemBuilder: (BuildContext context, int i) {
+                          return LocaleTile(locale: localeController.locales[i], updateLocale: localeController.updateLocale);
+                        }),
+                  )),
             ),
             Divider(height: 1, thickness: 1),
           ],
