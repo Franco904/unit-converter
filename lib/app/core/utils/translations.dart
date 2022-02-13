@@ -32,8 +32,8 @@ class UnitConverterTranslations extends Translations {
           'category_digital_storage': 'Digital Storage',
           'category_currency': 'Currency',
           'category_energy': 'Energy',
-          'category_eletrical_resistance': 'Eletrical Resistance',
-          'category_eletrical_charge': 'Eletrical Charge',
+          'category_eletrical_resistance': 'Electrical Resistance',
+          'category_eletrical_charge': 'Electrical Charge',
           'category_voltage': 'Voltage',
           'category_frequency': 'Frequency',
           'category_pressure': 'Pressure',
@@ -45,8 +45,7 @@ class UnitConverterTranslations extends Translations {
           'converter_text_value': 'value',
           'converter_input_label': 'Input',
           'converter_output_label': 'Output',
-          'converter_input_validation': 'Please input a convert value',
-          'converter_dropdown_validation': 'Required',
+          'converter_field_validation': 'Required',
 
           // Units
           'unit_millimeter': 'Millimeter',
@@ -157,8 +156,7 @@ class UnitConverterTranslations extends Translations {
           'converter_text_value': 'valor de',
           'converter_input_label': 'Valor de entrada',
           'converter_output_label': 'Valor convertido',
-          'converter_input_validation': 'Por favor introduce un valor para convertir',
-          'converter_dropdown_validation': 'Campo obligatorio',
+          'converter_field_validation': 'Campo obligatorio',
 
           // Units
           'unit_millimeter': 'Milímetro',
@@ -269,8 +267,7 @@ class UnitConverterTranslations extends Translations {
           'converter_text_value': 'valor de',
           'converter_input_label': 'Valor de entrada',
           'converter_output_label': 'Valor convertido',
-          'converter_input_validation': 'Por favor insira um valor para converter',
-          'converter_dropdown_validation': 'Campo obrigatório',
+          'converter_field_validation': 'Campo obrigatório',
 
           // Units
           'unit_millimeter': 'Milímetro',
