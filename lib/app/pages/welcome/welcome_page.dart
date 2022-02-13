@@ -30,7 +30,6 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 32),
-              SizedBox(height: 300, width: 300),
               SizedBox(height: 32),
               ElevatedButton(
                   onPressed: () => Get.off(() => CategoryListPage()),

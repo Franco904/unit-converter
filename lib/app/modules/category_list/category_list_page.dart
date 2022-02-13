@@ -14,13 +14,10 @@ class CategoryListPage extends GetView<CategoryListController> {
 
   @override
   Widget build(BuildContext context) {
-    if (!Get.isRegistered<CategoryListController>()) {
-      Get.put(CategoryListController());
-    } else {
-      // Ver se existe uma lógica melhor para atualizar as categorias traduzidas
+    if (Get.isRegistered<CategoryListController>()) {
       Get.delete<CategoryListController>();
-      Get.put(CategoryListController());
     }
+    Get.put(CategoryListController());
 
     return Scaffold(
       appBar: AppBar(title: Text('categories_title'.tr), centerTitle: true, backgroundColor: Colors.cyan, automaticallyImplyLeading: false, actions: [
@@ -71,12 +68,15 @@ class CategoryListPage extends GetView<CategoryListController> {
             Divider(height: 1, thickness: 1),
             Flexible(
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: 160),
-                child: ListView.builder(
+                constraints: BoxConstraints(maxHeight: 165),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  child: ListView.builder(
                     itemCount: localeController.locales.length,
                     itemBuilder: (BuildContext context, int i) {
                       return LocaleTile(locale: localeController.locales[i], updateLocale: localeController.updateLocale);
                     }),
+                )
               ),
             ),
             Divider(height: 1, thickness: 1),
@@ -84,6 +84,7 @@ class CategoryListPage extends GetView<CategoryListController> {
         ),
         actions: <Widget>[
           TextButton(
+            style: TextButton.styleFrom(primary: Colors.cyan, textStyle: textTheme.button?.copyWith(fontSize: 18)),
             child: Text('categories_dialog_button'.tr),
             onPressed: () {
               Get.back();
