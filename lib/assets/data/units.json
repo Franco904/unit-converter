@@ -161,156 +161,166 @@
     },
     {
         "id": "36",
-        "name": "Real",
+        "name": "Dollar",
         "idCategory": "7"
     },
     {
         "id": "37",
-        "name": "Dolar",
+        "name": "Canadian dollar",
         "idCategory": "7"
     },
     {
         "id": "38",
         "name": "Euro",
         "idCategory": "7"
-    },  
+    },
     {
         "id": "39",
+        "name": "Real",
+        "idCategory": "7"
+    },
+    {
+        "id": "40",
+        "name": "Argentine peso",
+        "idCategory": "7"
+    },
+    {
+        "id": "41",
         "name": "Joule",
         "idCategory": "8"
     },
     {
-        "id": "40",
+        "id": "42",
         "name": "Kilojoule",
         "idCategory": "8"
     },
     {
-        "id": "41",
+        "id": "43",
         "name": "Megajoule",
         "idCategory": "8"
     },
     {
-        "id": "42",
+        "id": "44",
         "name": "Gigajoule",
         "idCategory": "8"
     },
     {
-        "id": "43",
+        "id": "45",
         "name": "Milliohms",
         "idCategory": "9"
     },
     {
-        "id": "44",
+        "id": "46",
         "name": "Ohms",
         "idCategory": "9"
     },
     {
-        "id": "45",
+        "id": "47",
         "name": "Kiloohms",
         "idCategory": "9"
     },
     {
-        "id": "46",
+        "id": "48",
         "name": "Nanocoulombs",
         "idCategory": "10"
     },
     {
-        "id": "47",
+        "id": "49",
         "name": "Microcoulombs",
         "idCategory": "10"
     },
     {
-        "id": "48",
+        "id": "50",
         "name": "Millicoulombs",
         "idCategory": "10"
     },
     {
-        "id": "49",
+        "id": "51",
         "name": "Coulombs",
         "idCategory": "10"
     },
     {
-        "id": "50",
+        "id": "52",
         "name": "Volt",
         "idCategory": "11"
     },
     {
-        "id": "51",
+        "id": "53",
         "name": "Kilovolt",
         "idCategory": "11"
     },
     {
-        "id": "52",
+        "id": "54",
         "name": "Megavolt",
         "idCategory": "11"
     },
     {
-        "id": "53",
+        "id": "55",
         "name": "Gigavolt",
         "idCategory": "11"
     },
     {
-        "id": "54",
+        "id": "56",
         "name": "Hertz",
         "idCategory": "12"
     },
     {
-        "id": "55",
+        "id": "57",
         "name": "Kilohertz",
         "idCategory": "12"
     },
     {
-        "id": "56",
+        "id": "58",
         "name": "Megahertz",
         "idCategory": "12"
     },
     {
-        "id": "57",
+        "id": "59",
         "name": "Gigahertz",
         "idCategory": "12"
     },
     {
-        "id": "58",
+        "id": "60",
         "name": "Pascal",
         "idCategory": "13"
     },
     {
-        "id": "59",
+        "id": "61",
         "name": "Kilopascal",
         "idCategory": "13"
     },
     {
-        "id": "60",
+        "id": "62",
         "name": "Megapascal",
         "idCategory": "13"
     },
     {
-        "id": "61",
+        "id": "63",
         "name": "Gigapascal",
         "idCategory": "13"
     },
     {
-        "id": "62",
+        "id": "64",
         "name": "Kelvin",
         "idCategory": "14"
     },
     {
-        "id": "63",
+        "id": "65",
         "name": "Celsius",
         "idCategory": "14"
     },
     {
-        "id": "64",
+        "id": "66",
         "name": "Fahrenheit",
         "idCategory": "14"
     },
     {
-        "id": "65",
+        "id": "67",
         "name": "Meters per second",
         "idCategory": "15"
     },
     {
-        "id": "66",
+        "id": "68",
         "name": "Kilometers per hour",
         "idCategory": "15"
     }

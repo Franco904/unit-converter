@@ -49,9 +49,69 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    _buildInputFields(),
-                    _buildArrows(),
-                    _buildOutputFields(),
+                    Padding(
+                      padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                        TextFormField(
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'converter_input_label'.tr,
+                              labelStyle: TextStyle(
+                                color: Colors.grey[600],
+                              ),
+                              contentPadding: EdgeInsets.only(left: 12),
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                            ),
+                            onChanged: (value) => controller.inputString = value,
+                            validator: (value) => value == null || value.isEmpty ? 'converter_input_validation'.tr : null),
+                        SizedBox(height: 16),
+                        DropdownButtonFormField<String>(
+                            value: controller.fromUnit,
+                            hint: Text(category.name),
+                            icon: Icon(Icons.arrow_drop_down),
+                            decoration: InputDecoration(border: OutlineInputBorder()),
+                            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
+                            onChanged: (newValue) => _updateDropdownInput(newValue),
+                            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+                      ]),
+                    ),
+                    RotatedBox(
+                      quarterTurns: 1,
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () => _onConvertPressed(formKey),
+                          icon: Icon(
+                            Icons.compare_arrows_rounded,
+                            color: Colors.cyan[600],
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                        DropdownButtonFormField<String>(
+                            value: controller.toUnit,
+                            hint: Text(category.name),
+                            icon: Icon(Icons.arrow_drop_down),
+                            decoration: InputDecoration(border: OutlineInputBorder()),
+                            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
+                            onChanged: (newValue) => _updateDropdownOutput(newValue),
+                            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+                        SizedBox(height: 16),
+                        InputDecorator(
+                          child: Obx(() => Text(controller.outputString.value)),
+                          decoration: InputDecoration(
+                            hoverColor: Colors.grey[200],
+                            labelText: 'converter_output_label'.tr,
+                            labelStyle: Theme.of(Get.context!).textTheme.subtitle1,
+                            contentPadding: EdgeInsets.only(left: 12),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                          ),
+                        ),
+                      ]),
+                    ),
                   ],
                 ),
               ),
@@ -66,78 +126,6 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       controller.clearFields();
     }
     return true;
-  }
-
-  Widget _buildInputFields() {
-    return Padding(
-      padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        TextFormField(
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: 'converter_input_label'.tr,
-              labelStyle: TextStyle(
-                color: Colors.grey[600],
-              ),
-              contentPadding: EdgeInsets.only(left: 12),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-            ),
-            onChanged: (value) => controller.inputString = value,
-            validator: (value) => value == null || value.isEmpty ? 'converter_field_validation'.tr : null),
-        SizedBox(height: 16),
-        DropdownButtonFormField<String>(
-            value: controller.fromUnit,
-            hint: Text(category.name),
-            icon: Icon(Icons.arrow_drop_down),
-            decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
-            onChanged: (newValue) => _updateDropdownInput(newValue),
-            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
-      ]),
-    );
-  }
-
-  Widget _buildArrows() {
-    return RotatedBox(
-      quarterTurns: 1,
-      child: Center(
-        child: IconButton(
-          onPressed: () => _onConvertPressed(formKey),
-          icon: Icon(
-            Icons.compare_arrows_rounded,
-            color: Colors.cyan[600],
-            size: 30,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildOutputFields() {
-    return Padding(
-      padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        DropdownButtonFormField<String>(
-            value: controller.toUnit,
-            hint: Text(category.name),
-            icon: Icon(Icons.arrow_drop_down),
-            decoration: InputDecoration(border: OutlineInputBorder()),
-            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
-            onChanged: (newValue) => _updateDropdownOutput(newValue),
-            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
-        SizedBox(height: 16),
-        InputDecorator(
-          child: Obx(() => Text(controller.outputString.value)),
-          decoration: InputDecoration(
-            hoverColor: Colors.grey[200],
-            labelText: 'converter_output_label'.tr,
-            labelStyle: Theme.of(Get.context!).textTheme.subtitle1,
-            contentPadding: EdgeInsets.only(left: 12),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-          ),
-        ),
-      ]),
-    );
   }
 
   void _updateDropdownInput(String? newValue) {
@@ -216,20 +204,61 @@ class UnitConverterPage extends GetView<UnitConverterController> {
 
       // Currency
       case 7:
-        // TODO: Como faço para buscar a cotação atualizada das moedas?
+        // TODO: Buscar cotação atualizada das moedas
 
-        if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_dolar'.tr) {
-          outputValue = inputValue / 5.53;
-        } else if (controller.fromUnit == 'unit_dolar'.tr && controller.toUnit == 'unit_real'.tr) {
-          outputValue = inputValue * 5.53;
-        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_euro'.tr) {
-          outputValue = inputValue / 6.28;
+        // From unit dollar
+        if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+          outputValue = inputValue * 1.27;
+        } else if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_euro'.tr) {
+          outputValue = inputValue * 0.88;
+        } else if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_real'.tr) {
+          outputValue = inputValue * 5.25;
+        } else if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+          outputValue = inputValue * 106.44;
+        }
+
+        // From unit canadian dollar
+        else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_dollar'.tr) {
+          outputValue = inputValue * 0.79;
+        } else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_euro'.tr) {
+          outputValue = inputValue * 0.69;
+        } else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_real'.tr) {
+          outputValue = inputValue * 4.13;
+        } else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+          outputValue = inputValue * 83.58;
+        }
+
+        // From unit euro
+        else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_dollar'.tr) {
+          outputValue = inputValue * 1.14;
+        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+          outputValue = inputValue * 1.45;
         } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_real'.tr) {
-          outputValue = inputValue * 6.28;
-        } else if (controller.fromUnit == 'unit_dolar'.tr && controller.toUnit == 'unit_euro'.tr) {
-          outputValue = inputValue / 1.13;
-        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_dolar'.tr) {
-          outputValue = inputValue * 1.13;
+          outputValue = inputValue * 5.96;
+        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+          outputValue = inputValue * 120.81;
+        }
+
+        // From unit real
+        else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_dollar'.tr) {
+          outputValue = inputValue * 0.19;
+        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+          outputValue = inputValue * 0.24;
+        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_euro'.tr) {
+          outputValue = inputValue * 0.17;
+        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+          outputValue = inputValue * 20.26;
+        }
+
+        // From unit argentine peso
+        else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_dollar'.tr) {
+          outputValue = inputValue * 0.0093;
+        } else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+          outputValue = inputValue * 0.012;
+        } else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_euro'.tr) {
+          outputValue = inputValue * 0.0083;
+        } else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_real'.tr) {
+          outputValue = inputValue * 0.049;
         } else {
           outputValue = inputValue;
         }
@@ -281,7 +310,8 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       default:
         print('Unit not found.');
     }
-    // TODO: Como imprimir output com separação de casas decimais?
+    // TODO: Imprimir output com separação de casas decimais
+
     // var formatter = NumberFormat('#,##,000');
 
     controller.outputString.value = outputValue.toString();
