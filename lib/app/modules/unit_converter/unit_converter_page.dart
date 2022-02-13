@@ -29,95 +29,100 @@ class UnitConverterPage extends GetView<UnitConverterController> {
 
     return WillPopScope(
       onWillPop: () => _onBackPressed(),
-      child: Scaffold(
-          appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
-          body: Padding(
-            padding: EdgeInsets.only(top: 40),
-            child: SingleChildScrollView(
-              child: Form(
-                key: formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Text(
-                        localeController.currentLocale.value == localeController.locales[0]['locale'].toString()
-                            ? englishInputString
-                            : elseInputString,
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      child: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Scaffold(
+            appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
+            body: Padding(
+              padding: EdgeInsets.only(top: 40),
+              child: SingleChildScrollView(
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          localeController.currentLocale.value == localeController.locales[0]['locale'].toString()
+                              ? englishInputString
+                              : elseInputString,
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        TextFormField(
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              labelText: 'converter_input_label'.tr,
-                              labelStyle: TextStyle(
-                                color: Colors.grey[600],
+                      Padding(
+                        padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                          TextFormField(
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                labelText: 'converter_input_label'.tr,
+                                labelStyle: TextStyle(
+                                  color: Colors.grey[600],
+                                ),
+                                contentPadding: EdgeInsets.only(left: 12),
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
                               ),
+                              onChanged: (value) => controller.inputString = value,
+                              validator: (value) => value == null || value.isEmpty ? 'converter_field_validation'.tr : null),
+                          SizedBox(height: 16),
+                          DropdownButtonFormField<String>(
+                              value: controller.fromUnit,
+                              hint: Text(category.name),
+                              icon: Icon(Icons.arrow_drop_down),
+                              decoration: InputDecoration(border: OutlineInputBorder()),
+                              validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
+                              onChanged: (newValue) {
+                                _updateDropdownInput(newValue);
+                              },
+                              items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+                        ]),
+                      ),
+                      RotatedBox(
+                        quarterTurns: 1,
+                        child: Center(
+                          child: IconButton(
+                            onPressed: () => _onConvertPressed(formKey),
+                            icon: Icon(
+                              Icons.compare_arrows_rounded,
+                              color: Colors.cyan[600],
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                          DropdownButtonFormField<String>(
+                              value: controller.toUnit,
+                              hint: Text(category.name),
+                              icon: Icon(Icons.arrow_drop_down),
+                              decoration: InputDecoration(border: OutlineInputBorder()),
+                              validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
+                              onChanged: (newValue) => _updateDropdownOutput(newValue),
+                              items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+                          SizedBox(height: 16),
+                          InputDecorator(
+                            child: Obx(() => Text(controller.outputString.value)),
+                            decoration: InputDecoration(
+                              hoverColor: Colors.grey[200],
+                              labelText: 'converter_output_label'.tr,
+                              labelStyle: Theme.of(Get.context!).textTheme.subtitle1,
                               contentPadding: EdgeInsets.only(left: 12),
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
                             ),
-                            onChanged: (value) => controller.inputString = value,
-                            validator: (value) => value == null || value.isEmpty ? 'converter_input_validation'.tr : null),
-                        SizedBox(height: 16),
-                        DropdownButtonFormField<String>(
-                            value: controller.fromUnit,
-                            hint: Text(category.name),
-                            icon: Icon(Icons.arrow_drop_down),
-                            decoration: InputDecoration(border: OutlineInputBorder()),
-                            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
-                            onChanged: (newValue) => _updateDropdownInput(newValue),
-                            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
-                      ]),
-                    ),
-                    RotatedBox(
-                      quarterTurns: 1,
-                      child: Center(
-                        child: IconButton(
-                          onPressed: () => _onConvertPressed(formKey),
-                          icon: Icon(
-                            Icons.compare_arrows_rounded,
-                            color: Colors.cyan[600],
-                            size: 30,
                           ),
-                        ),
+                        ]),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        DropdownButtonFormField<String>(
-                            value: controller.toUnit,
-                            hint: Text(category.name),
-                            icon: Icon(Icons.arrow_drop_down),
-                            decoration: InputDecoration(border: OutlineInputBorder()),
-                            validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_dropdown_validation'.tr : null,
-                            onChanged: (newValue) => _updateDropdownOutput(newValue),
-                            items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
-                        SizedBox(height: 16),
-                        InputDecorator(
-                          child: Obx(() => Text(controller.outputString.value)),
-                          decoration: InputDecoration(
-                            hoverColor: Colors.grey[200],
-                            labelText: 'converter_output_label'.tr,
-                            labelStyle: Theme.of(Get.context!).textTheme.subtitle1,
-                            contentPadding: EdgeInsets.only(left: 12),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-                          ),
-                        ),
-                      ]),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          resizeToAvoidBottomInset: false),
+            resizeToAvoidBottomInset: false),
+      ),
     );
   }
 

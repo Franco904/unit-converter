@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 
 class UnitConverterController extends GetxController {
-  String? fromUnit; // dropdownInput unit name
-  String? toUnit; // dropdownOutput unit name
+  String? fromUnit;
+  String? toUnit;
 
-  late int fromUnitId; // dropdownInput unit id
-  late int toUnitId; // dropdownOutput unit id
+  late int fromUnitId;
+  late int toUnitId;
 
   String inputString = '';
   RxString outputString = ''.obs;
