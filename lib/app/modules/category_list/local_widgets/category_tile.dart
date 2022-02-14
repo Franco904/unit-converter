@@ -11,7 +11,7 @@ class CategoryTile extends StatelessWidget {
   // Monta cada uma das opções de categorias
   @override
   Widget build(BuildContext context) {
-    return Container( 
+    return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
       child: Card(
         child: InkWell(

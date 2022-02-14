@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
@@ -33,9 +32,7 @@ class CategoryListPage extends GetView<CategoryListController> {
       body: ListView.builder(
           itemCount: controller.categories.length,
           itemBuilder: (BuildContext context, int i) {
-            return Padding(
-              padding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), 
-              child: CategoryTile(category: controller.categories[i]));
+            return Padding(padding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), child: CategoryTile(category: controller.categories[i]));
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => InfoPage()),

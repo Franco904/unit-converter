@@ -71,8 +71,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                               value: controller.fromUnit,
                               hint: Text(category.name),
                               icon: Icon(Icons.arrow_drop_down),
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
+                              decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
                               validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
                               onChanged: (newValue) {
                                 _updateDropdownInput(newValue);
@@ -100,8 +99,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                               value: controller.toUnit,
                               hint: Text(category.name),
                               icon: Icon(Icons.arrow_drop_down),
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
+                              decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
                               validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
                               onChanged: (newValue) => _updateDropdownOutput(newValue),
                               items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
