@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:get/get.dart';
 
 class CategoryDao {
@@ -26,10 +28,10 @@ class CategoryDao {
 
   List<IconData> getCategoryIcons() {
     return [
-      Icons.bar_chart_rounded,
+      FontAwesomeIcons.rulerHorizontal,
       Icons.aspect_ratio_rounded,
-      Icons.adjust_rounded,
-      Icons.amp_stories_outlined,
+      Ionicons.cube_outline,
+      Ionicons.barbell_outline,
       Icons.timer_rounded,
       Icons.memory_rounded,
       Icons.attach_money_rounded,
@@ -38,7 +40,7 @@ class CategoryDao {
       Icons.battery_charging_full_rounded,
       Icons.electrical_services_rounded,
       Icons.waves_rounded,
-      Icons.text_rotation_down_sharp,
+      Ionicons.speedometer_outline,
       Icons.thermostat_rounded,
       Icons.speed_rounded,
     ];

@@ -12,17 +12,27 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 4),
+            blurRadius: 16,
+            spreadRadius: -4,
+            color: Colors.grey.shade200,
+          ),
+        ],
+      ),
       child: Card(
         child: InkWell(
-          highlightColor: Colors.grey[100],
+          highlightColor: Colors.grey[200],
           splashColor: Colors.cyan.withOpacity(0.3),
           borderRadius: BorderRadius.circular(4),
           onTap: () => Get.to(() => UnitConverterPage(category: category)),
           child: Padding(
             padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 16),
             child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Center(child: Icon(category.icon, size: 25)),
+              Center(child: Icon(category.icon)),
               Center(
                 child: Padding(
                   padding: EdgeInsets.only(left: 20),
