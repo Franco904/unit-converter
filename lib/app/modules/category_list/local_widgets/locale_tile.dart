@@ -13,8 +13,8 @@ class LocaleTile extends StatelessWidget {
     return SizedBox(
       height: 55,
       child: InkWell(
-        highlightColor: Colors.grey[300],
-        splashColor: Colors.grey[350],
+        highlightColor: Colors.grey[100],
+        splashColor: Colors.cyan.withOpacity(0.3),
         onTap: () async {
           Get.back();
           await updateLocale(locale['locale']);
