@@ -10,6 +10,7 @@ import 'package:tutorial_inicial/app/utils/device.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+ 
   await loadDeviceOrientation();
   await initialConfig().then((_) => runApp(UnitConverterApp()));
 }
@@ -28,7 +29,7 @@ class UnitConverterApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Unit Converter',
-      initialRoute: Routes.WELCOME,
+      initialRoute: Routes.SPLASH,
       initialBinding: GlobalBindings(),
       getPages: getAppPages(),
       locale: localeStorage.currentLocale,

@@ -17,7 +17,6 @@ dependencies:
   # Icons
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.9.2
-  font_awesome_flutter: ^9.2.0
   ionicons: ^0.1.2
 
   # Data
