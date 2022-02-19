@@ -12,9 +12,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
   final LocaleController localeController = Get.find<LocaleController>();
 
   final formKey = GlobalKey<FormState>();
-  final Category category;
-
-  UnitConverterPage({required this.category});
+  final Category category = Get.arguments;
 
   // TODO: HintTooltip para alertar a função do botão converter
 

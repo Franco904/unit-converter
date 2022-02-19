@@ -10,8 +10,6 @@ import 'package:tutorial_inicial/app/utils/device.dart';
 class CategoryListPage extends GetView<CategoryListController> {
   final LocaleController localeController = Get.find<LocaleController>();
 
-  CategoryListPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     if (Get.isRegistered<CategoryListController>()) {

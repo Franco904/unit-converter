@@ -28,7 +28,7 @@ class CategoryTile extends StatelessWidget {
           highlightColor: Colors.grey[200],
           splashColor: Colors.cyan.withOpacity(0.3),
           borderRadius: BorderRadius.circular(4),
-          onTap: () => Get.to(() => UnitConverterPage(category: category)),
+          onTap: () => Get.to(() => UnitConverterPage(), arguments: category),
           child: Padding(
             padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 16),
             child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
