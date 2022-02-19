@@ -13,7 +13,6 @@ class SplashScreenController extends GetxController {
       isLoading.value = false;
 
       Get.offAll<void>(() => firstAccess ? WelcomePage() : CategoryListPage());
-      await writeFirstAccess(false);
     });
     super.onInit();
   }
