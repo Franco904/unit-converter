@@ -8,42 +8,48 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 70),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'welcome_title'.tr,
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        child: Flexible(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 64),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'app_title'.tr,
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.cyan),
+                  ),
                 ),
-              ),
-              SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'app_title'.tr,
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.cyan),
+                SizedBox(height: 36),
+                Container(
+                  constraints: BoxConstraints(maxWidth: 225, maxHeight: 300),
+                  child: Image.asset('./lib/assets/images/welcome_image.png'),
                 ),
-              ),
-              SizedBox(height: 32),
-              SizedBox(height: 32),
-              ElevatedButton(
-                  onPressed: () async { 
-                    Get.off(() => CategoryListPage());
-                    await writeFirstAccess(false);
-                  },
-                  style: ElevatedButton.styleFrom(primary: Colors.cyan[600], textStyle: TextStyle(fontSize: 18)),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 10, right: 30, bottom: 10, left: 30),
-                    child: Text(
-                      'welcome_button'.tr,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
-            ],
+                SizedBox(height: 36),                
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'welcome_label'.tr,
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                ),
+                SizedBox(height: 40),
+                ElevatedButton(
+                    onPressed: () async {
+                      Get.off(() => CategoryListPage());
+                      await writeFirstAccess(false);
+                    },
+                    style: ElevatedButton.styleFrom(primary: Colors.cyan[600], textStyle: TextStyle(fontSize: 18)),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      child: Text(
+                        'welcome_button'.tr,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )),
+              ],
+            ),
           ),
         ),
       ),

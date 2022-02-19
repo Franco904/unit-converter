@@ -43,3 +43,4 @@ flutter:
   assets:
     - lib/assets/data/units.json
     - lib/assets/images/flutter_logo_grey.png
+    - lib/assets/images/welcome_image.png
