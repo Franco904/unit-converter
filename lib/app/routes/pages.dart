@@ -13,27 +13,24 @@ List<GetPage> getAppPages() {
   return [
     // Splash
     GetPage<void>(
-      name: Routes.SPLASH,
-      page: () => SplashScreenPage(),
-      binding: BindingsBuilder(() => Get.lazyPut(() => SplashScreenController(), fenix: true))
-    ),
+        name: Routes.SPLASH,
+        page: () => SplashScreenPage(),
+        binding: BindingsBuilder(() => Get.lazyPut(() => SplashScreenController(), fenix: true))),
 
     // Welcome
     GetPage<void>(name: Routes.WELCOME, page: () => WelcomePage()),
 
     // CategoryList
     GetPage<void>(
-      name: Routes.CATEGORY,
-      page: () => CategoryListPage(),
-      binding: BindingsBuilder(() => Get.lazyPut(() => CategoryListController(), fenix: true))
-    ),
+        name: Routes.CATEGORY,
+        page: () => CategoryListPage(),
+        binding: BindingsBuilder(() => Get.lazyPut(() => CategoryListController(), fenix: true))),
 
     // UnitConverter
     GetPage<void>(
-      name: Routes.CONVERTER, 
-      page: () => UnitConverterPage(),
-      binding: BindingsBuilder(() => Get.lazyPut(() => UnitConverterController(), fenix: true))
-    ),
+        name: Routes.CONVERTER,
+        page: () => UnitConverterPage(),
+        binding: BindingsBuilder(() => Get.lazyPut(() => UnitConverterController(), fenix: true))),
 
     // Info
     GetPage<void>(name: Routes.INFO, page: () => InfoPage()),

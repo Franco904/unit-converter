@@ -1,5 +1,3 @@
-import 'package:tutorial_inicial/app/data/model/unit.dart';
-
 class Routes {
   // Named routes
   static const SPLASH = '/splash';

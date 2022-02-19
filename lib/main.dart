@@ -10,7 +10,7 @@ import 'package:tutorial_inicial/app/utils/device.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
+
   await loadDeviceOrientation();
   await initialConfig().then((_) => runApp(UnitConverterApp()));
 }

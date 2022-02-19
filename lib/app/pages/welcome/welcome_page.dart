@@ -26,7 +26,7 @@ class WelcomePage extends StatelessWidget {
                   constraints: BoxConstraints(maxWidth: 225, maxHeight: 300),
                   child: Image.asset('./lib/assets/images/welcome_image.png'),
                 ),
-                SizedBox(height: 36),                
+                SizedBox(height: 36),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
