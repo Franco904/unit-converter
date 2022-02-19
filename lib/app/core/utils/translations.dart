@@ -45,7 +45,8 @@ class UnitConverterTranslations extends Translations {
           'converter_text_value': 'value',
           'converter_input_label': 'Input',
           'converter_output_label': 'Output',
-          'converter_field_validation': 'Required',
+          'converter_validation_required': 'Required',
+          'converter_validation_invalid': 'Invalid value',
 
           // Units
           'unit_millimeter': 'Millimeter',
@@ -156,7 +157,8 @@ class UnitConverterTranslations extends Translations {
           'converter_text_value': 'valor de',
           'converter_input_label': 'Valor de entrada',
           'converter_output_label': 'Valor convertido',
-          'converter_field_validation': 'Campo obligatorio',
+          'converter_validation_required': 'Campo obligatorio',
+          'converter_validation_invalid': 'Valor no válido',
 
           // Units
           'unit_millimeter': 'Milímetro',
@@ -267,7 +269,8 @@ class UnitConverterTranslations extends Translations {
           'converter_text_value': 'valor de',
           'converter_input_label': 'Valor de entrada',
           'converter_output_label': 'Valor convertido',
-          'converter_field_validation': 'Campo obrigatório',
+          'converter_validation_required': 'Campo obrigatório',
+          'converter_validation_invalid': 'Valor inválido',
 
           // Units
           'unit_millimeter': 'Milímetro',

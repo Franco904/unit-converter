@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
 import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
+import 'package:tutorial_inicial/app/core/utils/validations.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
 import 'package:tutorial_inicial/app/utils/strings.dart';
@@ -63,14 +64,15 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
                               ),
                               onChanged: (value) => controller.inputString = value,
-                              validator: (value) => value == null || value.isEmpty ? 'converter_field_validation'.tr : null),
+                              validator: (value) => validateIntText(value),
+                          ),
                           SizedBox(height: 16),
                           DropdownButtonFormField<String>(
                               value: controller.fromUnit,
                               hint: Text(category.name),
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
-                              validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
+                              validator: (dropdown) => validateDropdown(dropdown),
                               onChanged: (newValue) {
                                 _updateDropdownInput(newValue);
                               },
@@ -99,7 +101,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                               hint: Text(category.name),
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
-                              validator: (dropdown) => dropdown == null || dropdown.isEmpty ? 'converter_field_validation'.tr : null,
+                              validator: (dropdown) => validateDropdown(dropdown),
                               onChanged: (newValue) => _updateDropdownOutput(newValue),
                               items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
                           SizedBox(height: 16),
