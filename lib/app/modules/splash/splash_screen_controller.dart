@@ -10,12 +10,10 @@ class SplashScreenController extends GetxController {
   void onInit() {
     Future.delayed(Duration(seconds: 2), () async {
       final firstAccess = await checkFirstAccess();
-      await writeFirstAccess(false);
       isLoading.value = false;
 
-      // Não está indo direto para a lista de categorias (controller é deletado)
-      // Usar um GetxService no lugar
       Get.offAll<void>(() => firstAccess ? WelcomePage() : CategoryListPage());
+      await writeFirstAccess(false);
     });
     super.onInit();
   }

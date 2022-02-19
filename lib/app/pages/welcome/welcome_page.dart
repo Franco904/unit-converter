@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/modules/category_list/category_list_page.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
