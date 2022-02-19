@@ -8,7 +8,7 @@ class UnitConverterTranslations extends Translations {
           'app_title': 'Unit Converter',
 
           // Welcome
-          'welcome_title': 'Welcome to',
+          'welcome_label': 'Easily convert between the units of measurement you want.',
           'welcome_button': 'Start',
 
           // Info
@@ -120,7 +120,7 @@ class UnitConverterTranslations extends Translations {
           'app_title': 'Conversor de Unidades',
 
           // Welcome
-          'welcome_title': 'Bienvenido a',
+          'welcome_label': 'Convierte fácilmente entre las unidades de medida que deseas.',
           'welcome_button': 'Iniciar',
 
           // Info
@@ -232,7 +232,7 @@ class UnitConverterTranslations extends Translations {
           'app_title': 'Conversor de Unidades',
 
           // Welcome
-          'welcome_title': 'Bem-vindo ao',
+          'welcome_label': 'Converta facilmente entre as unidades de medida que pretender.',
           'welcome_button': 'Iniciar',
 
           // Info

@@ -35,7 +35,7 @@ class InfoPage extends StatelessWidget {
                     SizedBox(height: 24),
                     Text('info_text3'.tr),
                     SizedBox(height: 12),
-                    Image.asset('lib/assets/images/flutter_logo_grey.png')
+                    Image.asset('./lib/assets/images/flutter_logo_grey.png')
                   ],
                 ),
               ),
