@@ -18,7 +18,7 @@ class SettingsPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.zero,
         children: [
-          SafeArea(child: SizedBox(height: 36)),
+          SafeArea(child: SizedBox(height: 24)),
           Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text(
