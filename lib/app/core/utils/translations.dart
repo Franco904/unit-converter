@@ -22,7 +22,7 @@ class UnitConverterTranslations extends Translations {
           'categories_dialog_title': 'Change language',
           'categories_dialog_text': 'Select the language you want to use in this app',
           'categories_dialog_button': 'Cancel',
-          
+
           // Drawer Options
           'categories_drawer_settings': 'Settings',
 

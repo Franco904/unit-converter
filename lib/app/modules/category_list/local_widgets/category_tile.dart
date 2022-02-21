@@ -25,7 +25,6 @@ class CategoryTile extends StatelessWidget {
       ),
       child: Card(
         child: InkWell(
-          highlightColor: Colors.grey[200],
           splashColor: Colors.cyan.withOpacity(0.3),
           borderRadius: BorderRadius.circular(4),
           onTap: () => Get.to(() => UnitConverterPage(), arguments: category),

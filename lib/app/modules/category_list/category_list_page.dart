@@ -6,7 +6,6 @@ import 'package:tutorial_inicial/app/modules/category_list/category_list_control
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/category_tile.dart';
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/converter_drawer.dart';
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/locale_tile.dart';
-import 'package:tutorial_inicial/app/pages/info/info_page.dart';
 import 'package:tutorial_inicial/app/utils/device.dart';
 
 class CategoryListPage extends GetView<CategoryListController> {
