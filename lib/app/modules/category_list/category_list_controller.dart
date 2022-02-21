@@ -10,6 +10,8 @@ class CategoryListController extends GetxController {
 
   final List<Category> categories = <Category>[];
 
+  final RxBool isDrawerOpen = false.obs;
+
   @override
   void onInit() {
     super.onInit();
