@@ -7,21 +7,21 @@ class CategoryDao {
 
   List<String> getCategoryNames() {
     return [
-      'category_length'.tr,
-      'category_area'.tr,
-      'category_volume'.tr,
-      'category_mass'.tr,
-      'category_time'.tr,
-      'category_digital_storage'.tr,
-      'category_currency'.tr,
-      'category_energy'.tr,
-      'category_eletrical_resistance'.tr,
-      'category_eletrical_charge'.tr,
-      'category_voltage'.tr,
-      'category_frequency'.tr,
-      'category_pressure'.tr,
-      'category_temperature'.tr,
-      'category_speed'.tr,
+      'Length',
+      'Area',
+      'Volume',
+      'Mass',
+      'Time',
+      'Digital Storage',
+      'Currency',
+      'Energy',
+      'Eletrical Resistance',
+      'Eletrical Charge',
+      'Voltage',
+      'Frequency',
+      'Pressure',
+      'Temperature',
+      'Speed',
     ];
   }
 

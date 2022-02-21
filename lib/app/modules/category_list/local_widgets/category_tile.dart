@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_page.dart';
+import 'package:tutorial_inicial/app/utils/strings.dart';
 
 class CategoryTile extends StatelessWidget {
   final Category category;
@@ -36,7 +37,7 @@ class CategoryTile extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(left: 20),
                   child: Text(
-                    category.name,
+                    categoryNameLocated(category.name),
                     style: TextStyle(fontSize: 16),
                   ),
                 ),

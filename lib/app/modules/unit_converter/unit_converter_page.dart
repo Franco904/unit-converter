@@ -15,8 +15,6 @@ class UnitConverterPage extends GetView<UnitConverterController> {
   final formKey = GlobalKey<FormState>();
   final Category category = Get.arguments;
 
-  // TODO: HintTooltip para alertar a função do botão converter
-
   @override
   Widget build(BuildContext context) {
     if (!Get.isRegistered<UnitConverterController>()) {
@@ -31,7 +29,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-            appBar: AppBar(title: Text(category.name), centerTitle: true, backgroundColor: Colors.cyan),
+            appBar: AppBar(title: Text(categoryNameLocated(category.name)), centerTitle: true, backgroundColor: Colors.cyan),
             body: Padding(
               padding: EdgeInsets.only(top: 40),
               child: SingleChildScrollView(
@@ -69,14 +67,17 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                           SizedBox(height: 16),
                           DropdownButtonFormField<String>(
                               value: controller.fromUnit,
-                              hint: Text(category.name),
+                              hint: Text(categoryNameLocated(category.name)),
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
                               validator: (dropdown) => validateDropdown(dropdown),
-                              onChanged: (newValue) {
-                                _updateDropdownInput(newValue);
-                              },
-                              items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+                              onChanged: (newValue) => _updateDropdownInput(newValue),
+                              items: category.units.map((u) {
+                                return DropdownMenuItem<String>(
+                                  value: unitNameLocated(u.name),
+                                  child: Text(unitNameLocated(u.name)),
+                                );
+                              }).toList()),
                         ]),
                       ),
                       RotatedBox(
@@ -98,12 +99,17 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
                           DropdownButtonFormField<String>(
                               value: controller.toUnit,
-                              hint: Text(category.name),
+                              hint: Text(categoryNameLocated(category.name)),
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
                               validator: (dropdown) => validateDropdown(dropdown),
                               onChanged: (newValue) => _updateDropdownOutput(newValue),
-                              items: category.units.map((u) => DropdownMenuItem<String>(value: u.name, child: Text(u.name))).toList()),
+                              items: category.units.map((u) {
+                                return DropdownMenuItem<String>(
+                                  value: unitNameLocated(u.name),
+                                  child: Text(unitNameLocated(u.name)),
+                                );
+                              }).toList()),
                           SizedBox(height: 16),
                           InputDecorator(
                             child: Obx(() => Text(controller.outputString.value)),
@@ -210,8 +216,6 @@ class UnitConverterPage extends GetView<UnitConverterController> {
 
       // Currency
       case 7:
-        // TODO: Buscar cotação atualizada das moedas
-
         // From unit dollar
         if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
           outputValue = inputValue * 1.27;
@@ -316,7 +320,6 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       default:
         print('Unit not found.');
     }
-    // TODO: Imprimir output com separação de casas decimais
 
     // var formatter = NumberFormat('#,##,000');
 

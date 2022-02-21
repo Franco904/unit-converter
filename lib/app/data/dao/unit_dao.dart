@@ -16,17 +16,10 @@ class UnitDao {
     for (Map<String, dynamic> u in unitsJson) {
       var unit = Unit.fromJson(u);
       if (unit.idCategory == idCategory) {
-        unit.name = unitNameLocated(unit.name);
         listUnit.add(unit);
       }
     }
 
     return listUnit;
-  }
-
-  String unitNameLocated(String unitName) {
-    unitName = unitName.replaceAll(' ', '_').toLowerCase();
-
-    return 'unit_$unitName'.tr;
   }
 }
