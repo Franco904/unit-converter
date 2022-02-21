@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/modules/category_list/category_list_controller.dart';
 
 class LocaleTile extends StatelessWidget {
   final Map locale;
@@ -17,11 +16,6 @@ class LocaleTile extends StatelessWidget {
         onTap: () async {
           Get.back();
           await updateLocale(locale['locale']);
-
-          if (Get.isRegistered<CategoryListController>()) {
-            Get.delete<CategoryListController>();
-            Get.put(CategoryListController());
-          }
         },
         child: Padding(
           padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 24),
