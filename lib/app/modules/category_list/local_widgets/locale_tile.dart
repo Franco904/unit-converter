@@ -13,7 +13,6 @@ class LocaleTile extends StatelessWidget {
     return SizedBox(
       height: 55,
       child: InkWell(
-        highlightColor: Colors.grey[200],
         splashColor: Colors.cyan.withOpacity(0.3),
         onTap: () async {
           Get.back();
