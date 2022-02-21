@@ -6,6 +6,7 @@ import 'package:tutorial_inicial/app/modules/splash/splash_screen_page.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_page.dart';
 import 'package:tutorial_inicial/app/pages/info/info_page.dart';
+import 'package:tutorial_inicial/app/pages/settings/settings_page.dart';
 import 'package:tutorial_inicial/app/pages/welcome/welcome_page.dart';
 import 'package:tutorial_inicial/app/routes/routes.dart';
 
@@ -34,5 +35,8 @@ List<GetPage> getAppPages() {
 
     // Info
     GetPage<void>(name: Routes.INFO, page: () => InfoPage()),
+
+    // Settings
+    GetPage<void>(name: Routes.SETTINGS, page: () => SettingsPage())
   ];
 }

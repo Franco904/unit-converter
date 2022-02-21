@@ -24,4 +24,16 @@ class LocaleController extends GetxController {
       localeStorage.write(Get.locale!);
     });
   }
+
+  String getLocaleName() {
+    String locale = '';
+
+    locales.forEach((l) {
+      if (l['locale'] == Get.locale) {
+        locale = l['name'];
+      }
+    });
+
+    return locale;
+  }
 }
