@@ -9,4 +9,6 @@ class Routes {
   static const CONVERTER = '/unit_converter';
 
   static const INFO = '/info';
+
+  static const SETTINGS = '/settings';
 }

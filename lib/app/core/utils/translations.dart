@@ -17,14 +17,15 @@ class UnitConverterTranslations extends Translations {
           'info_text2': 'Developed by',
           'info_text3': 'With:',
 
+          // Settings
+          'settings_title': 'Settings',
+          'settings_label1': 'Usage options',
+          'settings_language_dialog_title': 'Change language',
+          'settings_language_dialog_text': 'Select the language you want to use in this app',
+          'settings_language_dialog_button': 'Cancel',
+
           // CategoryList
           'categories_title': 'Categories',
-          'categories_dialog_title': 'Change language',
-          'categories_dialog_text': 'Select the language you want to use in this app',
-          'categories_dialog_button': 'Cancel',
-
-          // Drawer Options
-          'categories_drawer_settings': 'Settings',
 
           // Categories
           'category_length': 'Length',
@@ -132,10 +133,17 @@ class UnitConverterTranslations extends Translations {
           'info_text2': 'Desarrollado por',
           'info_text3': 'Con:',
 
+          // Settings
+          'settings_title': 'Configuración',
+          'settings_label1': 'Opciones de uso',
+          'settings_language_dialog_title': 'Cambiar de idioma',
+          'settings_language_dialog_text': 'Selecciona el idioma con el que quieres usar la aplicación',
+          'settings_language_dialog_button': 'Cancelar',
+
           // CategoryList
           'categories_title': 'Categorías',
           'categories_dialog_title': 'Cambiar de idioma',
-          'categories_dialog_text': 'Selecciona el idioma con el que quieres usar la aplicación',
+          'categories_dialog_text': '',
           'categories_dialog_button': 'Cancelar',
 
           // Drawer Options
@@ -247,15 +255,16 @@ class UnitConverterTranslations extends Translations {
           'info_text2': 'Desenvolvido por',
           'info_text3': 'Com:',
 
+          // Settings
+          'settings_title': 'Configurações',
+          'settings_label1': 'Opções de uso',
+          'settings_language_dialog_title': 'Alterar idioma',
+          'settings_language_dialog_text': 'Selecione o idioma que você deseja utilizar no aplicativo',
+          'settings_language_dialog_button': 'Cancelar',
+
           // CategoryList
           'categories_title': 'Categorias',
-          'categories_dialog_title': 'Alterar idioma',
-          'categories_dialog_text': 'Selecione o idioma que você deseja utilizar no aplicativo',
-          'categories_dialog_button': 'Cancelar',
-
-          // Drawer Options
-          'categories_drawer_settings': 'Configurações',
-
+          
           // Categories
           'category_length': 'Comprimento',
           'category_area': 'Área',
