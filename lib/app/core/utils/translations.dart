@@ -264,7 +264,7 @@ class UnitConverterTranslations extends Translations {
 
           // CategoryList
           'categories_title': 'Categorias',
-          
+
           // Categories
           'category_length': 'Comprimento',
           'category_area': 'Área',
