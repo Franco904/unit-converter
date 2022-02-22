@@ -17,9 +17,6 @@ class UnitConverterPage extends GetView<UnitConverterController> {
 
   @override
   Widget build(BuildContext context) {
-    final englishInputString = converterStrings('english_input_string', category);
-    final elseInputString = converterStrings('else_input_string', category);
-
     return WillPopScope(
       onWillPop: () => _onBackPressed(),
       child: GestureDetector(
@@ -38,14 +35,12 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                       Padding(
                         padding: EdgeInsets.only(left: 20),
                         child: Text(
-                          localeController.currentLocale.value == localeController.locales[0]['locale'].toString()
-                              ? englishInputString
-                              : elseInputString,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          'converter_help_text'.tr,
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 24, right: 24, bottom: 24, left: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
                           TextFormField(
                             keyboardType: TextInputType.number,
@@ -80,7 +75,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                         quarterTurns: 1,
                         child: Center(
                           child: IconButton(
-                            tooltip: 'Converter',
+                            tooltip: 'converter_button_tooltip'.tr,
                             onPressed: () => _onConvertPressed(formKey),
                             icon: Icon(
                               Icons.compare_arrows_rounded,

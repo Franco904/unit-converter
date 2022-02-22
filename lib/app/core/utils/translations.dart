@@ -45,9 +45,9 @@ class UnitConverterTranslations extends Translations {
           'category_speed': 'Speed',
 
           // Unit Converter
-          'converter_title': 'Input a',
-          'converter_text_value': 'value',
+          'converter_help_text': 'Please complete all converting fields',
           'converter_input_label': 'Input',
+          'converter_button_tooltip': 'Convert',
           'converter_output_label': 'Output',
           'converter_validation_required': 'Required',
           'converter_validation_invalid': 'Invalid value',
@@ -167,9 +167,9 @@ class UnitConverterTranslations extends Translations {
           'category_speed': 'Velocidad',
 
           // Unit Converter
-          'converter_title': 'Introduce un',
-          'converter_text_value': 'valor de',
+          'converter_help_text': 'Completa todos los campos de conversión',
           'converter_input_label': 'Valor de entrada',
+          'converter_button_tooltip': 'Convertir',
           'converter_output_label': 'Valor convertido',
           'converter_validation_required': 'Campo obligatorio',
           'converter_validation_invalid': 'Valor no válido',
@@ -283,9 +283,9 @@ class UnitConverterTranslations extends Translations {
           'category_speed': 'Velocidade',
 
           // Unit Converter
-          'converter_title': 'Insira um',
-          'converter_text_value': 'valor de',
+          'converter_help_text': 'Preencha todos os campos de conversão',
           'converter_input_label': 'Valor de entrada',
+          'converter_button_tooltip': 'Converter',
           'converter_output_label': 'Valor convertido',
           'converter_validation_required': 'Campo obrigatório',
           'converter_validation_invalid': 'Valor inválido',
