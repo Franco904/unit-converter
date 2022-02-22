@@ -8,10 +8,6 @@ import 'package:tutorial_inicial/app/modules/category_list/local_widgets/convert
 class CategoryListPage extends GetView<CategoryListController> {
   @override
   Widget build(BuildContext context) {
-    if (!Get.isRegistered<CategoryListController>()) {
-      Get.put(CategoryListController());
-    }
-
     return WillPopScope(
       onWillPop: () async {
         if (controller.isDrawerOpen.value) {

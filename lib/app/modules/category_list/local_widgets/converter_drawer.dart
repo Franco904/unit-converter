@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutorial_inicial/app/pages/info/info_page.dart';
-import 'package:tutorial_inicial/app/pages/settings/settings_page.dart';
+import 'package:tutorial_inicial/app/routes/routes.dart';
 
 class ConverterDrawer extends StatelessWidget {
   @override
@@ -23,9 +22,9 @@ class ConverterDrawer extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8),
-          DrawerOptionItem(icon: Icons.info_outline, text: 'info_title'.tr, onTap: () => Get.to(() => InfoPage())),
+          DrawerOptionItem(icon: Icons.info_outline, text: 'info_title'.tr, onTap: () => Get.toNamed(Routes.INFO)),
           Divider(color: Colors.grey),
-          DrawerOptionItem(icon: Icons.settings_outlined, text: 'settings_title'.tr, onTap: () => Get.to(() => SettingsPage())),
+          DrawerOptionItem(icon: Icons.settings_outlined, text: 'settings_title'.tr, onTap: () => Get.toNamed(Routes.SETTINGS)),
         ],
       ),
     );

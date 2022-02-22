@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
-import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_page.dart';
+import 'package:tutorial_inicial/app/routes/routes.dart';
 import 'package:tutorial_inicial/app/utils/strings.dart';
 
 class CategoryTile extends StatelessWidget {
@@ -28,7 +28,9 @@ class CategoryTile extends StatelessWidget {
         child: InkWell(
           splashColor: Colors.cyan.withOpacity(0.3),
           borderRadius: BorderRadius.circular(4),
-          onTap: () => Get.to(() => UnitConverterPage(), arguments: category),
+          onTap: () {
+             Get.toNamed(Routes.CONVERTER, arguments: category);
+          },
           child: Padding(
             padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 16),
             child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
