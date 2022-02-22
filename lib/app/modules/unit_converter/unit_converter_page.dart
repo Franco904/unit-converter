@@ -67,7 +67,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
                               validator: (dropdown) => validateDropdown(dropdown),
-                              onChanged: (newValue) => _updateDropdownInput(newValue),
+                              onChanged: (newValue) => controller.updateDropdown(newValue, category, true),
                               items: category.units.map((u) {
                                 return DropdownMenuItem<String>(
                                   value: unitNameLocated(u.name),
@@ -99,7 +99,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
                               validator: (dropdown) => validateDropdown(dropdown),
-                              onChanged: (newValue) => _updateDropdownOutput(newValue),
+                              onChanged: (newValue) => controller.updateDropdown(newValue, category, false),
                               items: category.units.map((u) {
                                 return DropdownMenuItem<String>(
                                   value: unitNameLocated(u.name),
@@ -136,26 +136,6 @@ class UnitConverterPage extends GetView<UnitConverterController> {
     return true;
   }
 
-  void _updateDropdownInput(String? newValue) {
-    controller.fromUnit = newValue;
-
-    category.units.forEach((u) {
-      if (u.name == newValue) {
-        controller.fromUnitId = u.id;
-      }
-    });
-  }
-
-  void _updateDropdownOutput(String? newValue) {
-    controller.toUnit = newValue;
-
-    category.units.forEach((u) {
-      if (u.name == newValue) {
-        controller.toUnitId = u.id;
-      }
-    });
-  }
-
   void _onConvertPressed(GlobalKey<FormState> conversionKey) {
     conversionKey.currentState?.save();
     var isValid = conversionKey.currentState?.validate();
@@ -168,11 +148,16 @@ class UnitConverterPage extends GetView<UnitConverterController> {
   void _convert() {
     var currentCategoryId = category.id;
 
+    var fromUnit = controller.fromUnit;
+    var toUnit = controller.toUnit;
+    var fromUnitId = controller.fromUnitId!;
+    var toUnitId = controller.toUnitId!;
+
     num inputValue = int.parse(controller.inputString);
     num outputValue = 0;
 
     num base = 0;
-    num exponent = 0;
+    int exponent = 0;
 
     // Conversão entre unidades (de cada categoria)
     switch (currentCategoryId) {
@@ -181,7 +166,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       case 2:
       case 3:
         base = pow(10, currentCategoryId);
-        exponent = controller.fromUnitId - controller.toUnitId;
+        exponent = fromUnitId - toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -189,7 +174,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       // Mass
       case 4:
         base = 10;
-        exponent = controller.fromUnitId - controller.toUnitId;
+        exponent = fromUnitId - toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -197,7 +182,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       // Time
       case 5:
         base = 60;
-        exponent = controller.fromUnitId - controller.toUnitId;
+        exponent = fromUnitId - toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -205,7 +190,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       // Digital Storage
       case 6:
         base = pow(2, 10);
-        exponent = controller.fromUnitId - controller.toUnitId;
+        exponent = fromUnitId - toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
@@ -213,57 +198,57 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       // Currency
       case 7:
         // From unit dollar
-        if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+        if (fromUnit == 'unit_dollar'.tr && toUnit == 'unit_canadian_dollar'.tr) {
           outputValue = inputValue * 1.27;
-        } else if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_euro'.tr) {
+        } else if (fromUnit == 'unit_dollar'.tr && toUnit == 'unit_euro'.tr) {
           outputValue = inputValue * 0.88;
-        } else if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_real'.tr) {
+        } else if (fromUnit == 'unit_dollar'.tr && toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 5.25;
-        } else if (controller.fromUnit == 'unit_dollar'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+        } else if (fromUnit == 'unit_dollar'.tr && toUnit == 'unit_argentine_peso'.tr) {
           outputValue = inputValue * 106.44;
         }
 
         // From unit canadian dollar
-        else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_dollar'.tr) {
+        else if (fromUnit == 'unit_canadian_dollar'.tr && toUnit == 'unit_dollar'.tr) {
           outputValue = inputValue * 0.79;
-        } else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_euro'.tr) {
+        } else if (fromUnit == 'unit_canadian_dollar'.tr && toUnit == 'unit_euro'.tr) {
           outputValue = inputValue * 0.69;
-        } else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_real'.tr) {
+        } else if (fromUnit == 'unit_canadian_dollar'.tr && toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 4.13;
-        } else if (controller.fromUnit == 'unit_canadian_dollar'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+        } else if (fromUnit == 'unit_canadian_dollar'.tr && toUnit == 'unit_argentine_peso'.tr) {
           outputValue = inputValue * 83.58;
         }
 
         // From unit euro
-        else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_dollar'.tr) {
+        else if (fromUnit == 'unit_euro'.tr && toUnit == 'unit_dollar'.tr) {
           outputValue = inputValue * 1.14;
-        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+        } else if (fromUnit == 'unit_euro'.tr && toUnit == 'unit_canadian_dollar'.tr) {
           outputValue = inputValue * 1.45;
-        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_real'.tr) {
+        } else if (fromUnit == 'unit_euro'.tr && toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 5.96;
-        } else if (controller.fromUnit == 'unit_euro'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+        } else if (fromUnit == 'unit_euro'.tr && toUnit == 'unit_argentine_peso'.tr) {
           outputValue = inputValue * 120.81;
         }
 
         // From unit real
-        else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_dollar'.tr) {
+        else if (fromUnit == 'unit_real'.tr && toUnit == 'unit_dollar'.tr) {
           outputValue = inputValue * 0.19;
-        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+        } else if (fromUnit == 'unit_real'.tr && toUnit == 'unit_canadian_dollar'.tr) {
           outputValue = inputValue * 0.24;
-        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_euro'.tr) {
+        } else if (fromUnit == 'unit_real'.tr && toUnit == 'unit_euro'.tr) {
           outputValue = inputValue * 0.17;
-        } else if (controller.fromUnit == 'unit_real'.tr && controller.toUnit == 'unit_argentine_peso'.tr) {
+        } else if (fromUnit == 'unit_real'.tr && toUnit == 'unit_argentine_peso'.tr) {
           outputValue = inputValue * 20.26;
         }
 
         // From unit argentine peso
-        else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_dollar'.tr) {
+        else if (fromUnit == 'unit_argentine_peso'.tr && toUnit == 'unit_dollar'.tr) {
           outputValue = inputValue * 0.0093;
-        } else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_canadian_dollar'.tr) {
+        } else if (fromUnit == 'unit_argentine_peso'.tr && toUnit == 'unit_canadian_dollar'.tr) {
           outputValue = inputValue * 0.012;
-        } else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_euro'.tr) {
+        } else if (fromUnit == 'unit_argentine_peso'.tr && toUnit == 'unit_euro'.tr) {
           outputValue = inputValue * 0.0083;
-        } else if (controller.fromUnit == 'unit_argentine_peso'.tr && controller.toUnit == 'unit_real'.tr) {
+        } else if (fromUnit == 'unit_argentine_peso'.tr && toUnit == 'unit_real'.tr) {
           outputValue = inputValue * 0.049;
         } else {
           outputValue = inputValue;
@@ -281,24 +266,24 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       case 12:
       case 13:
         base = pow(10, 3);
-        exponent = controller.fromUnitId - controller.toUnitId;
+        exponent = fromUnitId - toUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
 
       // Temperature
       case 14:
-        if (controller.fromUnit == 'unit_kelvin'.tr && controller.toUnit == 'unit_celsius'.tr) {
+        if (fromUnit == 'unit_kelvin'.tr && toUnit == 'unit_celsius'.tr) {
           outputValue = inputValue - 273;
-        } else if (controller.fromUnit == 'unit_celsius'.tr && controller.toUnit == 'unit_kelvin'.tr) {
+        } else if (fromUnit == 'unit_celsius'.tr && toUnit == 'unit_kelvin'.tr) {
           outputValue = inputValue + 273;
-        } else if (controller.fromUnit == 'unit_fahrenheit'.tr && controller.toUnit == 'unit_celsius'.tr) {
+        } else if (fromUnit == 'unit_fahrenheit'.tr && toUnit == 'unit_celsius'.tr) {
           outputValue = (5 * inputValue - 160) / 9;
-        } else if (controller.fromUnit == 'unit_celsius'.tr && controller.toUnit == 'unit_fahrenheit'.tr) {
+        } else if (fromUnit == 'unit_celsius'.tr && toUnit == 'unit_fahrenheit'.tr) {
           outputValue = (9 * inputValue) / 5 + 32;
-        } else if (controller.fromUnit == 'unit_fahrenheit'.tr && controller.toUnit == 'unit_kelvin'.tr) {
+        } else if (fromUnit == 'unit_fahrenheit'.tr && toUnit == 'unit_kelvin'.tr) {
           outputValue = (5 * inputValue - 160) / 9 + 273;
-        } else if (controller.fromUnit == 'unit_kelvin'.tr && controller.toUnit == 'unit_fahrenheit'.tr) {
+        } else if (fromUnit == 'unit_kelvin'.tr && toUnit == 'unit_fahrenheit'.tr) {
           outputValue = (9 * inputValue - 2457) / 5 + 32;
         } else {
           outputValue = inputValue;
@@ -308,7 +293,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
       // Speed
       case 15:
         base = 3.6;
-        exponent = controller.toUnitId - controller.fromUnitId;
+        exponent = toUnitId - fromUnitId;
 
         outputValue = inputValue * pow(base, exponent);
         break;
