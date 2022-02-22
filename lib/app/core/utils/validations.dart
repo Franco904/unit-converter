@@ -1,4 +1,4 @@
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/get.dart';
 
 String? validateIntText(String? value) {
   if (value == null || value.isEmpty) {

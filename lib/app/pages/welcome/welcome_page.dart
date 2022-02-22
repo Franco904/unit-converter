@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/core/utils/session.dart';
 import 'package:tutorial_inicial/app/modules/category_list/category_list_page.dart';
+import 'package:tutorial_inicial/app/routes/routes.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -39,7 +40,7 @@ class WelcomePage extends StatelessWidget {
               SizedBox(height: 40),
               ElevatedButton(
                   onPressed: () async {
-                    Get.off(() => CategoryListPage());
+                    Get.offNamed(Routes.CATEGORY);
                     await writeFirstAccess(false);
                   },
                   style: ElevatedButton.styleFrom(primary: Colors.cyan[600], textStyle: TextStyle(fontSize: 18)),
