@@ -17,10 +17,6 @@ class UnitConverterPage extends GetView<UnitConverterController> {
 
   @override
   Widget build(BuildContext context) {
-    if (!Get.isRegistered<UnitConverterController>()) {
-      Get.put(UnitConverterController());
-    }
-
     final englishInputString = converterStrings('english_input_string', category);
     final elseInputString = converterStrings('else_input_string', category);
 
