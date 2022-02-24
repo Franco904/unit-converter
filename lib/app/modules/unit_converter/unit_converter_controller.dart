@@ -36,7 +36,7 @@ class UnitConverterController extends GetxController {
   void convertValue(Category category) {
     var currentCategoryId = category.id;
 
-    num inputValue = int.parse(inputString);
+    num inputValue = num.parse(inputString.replaceAll(',', '.'));
     num outputValue = 0;
 
     num base = 0;
