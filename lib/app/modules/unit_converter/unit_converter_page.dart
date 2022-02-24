@@ -61,6 +61,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                               hint: Text(categoryNameLocated(category.name)),
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
+                              menuMaxHeight: 180,
                               validator: (dropdown) => validateDropdown(dropdown),
                               onChanged: (newValue) => controller.updateDropdown(newValue, category, true),
                               items: category.units.map((u) {
@@ -93,6 +94,7 @@ class UnitConverterPage extends GetView<UnitConverterController> {
                               hint: Text(categoryNameLocated(category.name)),
                               icon: Icon(Icons.arrow_drop_down),
                               decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(6))),
+                              menuMaxHeight: 180,
                               validator: (dropdown) => validateDropdown(dropdown),
                               onChanged: (newValue) => controller.updateDropdown(newValue, category, false),
                               items: category.units.map((u) {
