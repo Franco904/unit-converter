@@ -7,7 +7,7 @@ import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/core/utils/validations.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/modules/unit_converter/unit_converter_controller.dart';
-import 'package:tutorial_inicial/app/utils/strings.dart';
+import 'package:tutorial_inicial/app/core/utils/strings.dart';
 
 class UnitConverterPage extends GetView<UnitConverterController> {
   final LocaleController localeController = Get.find<LocaleController>();

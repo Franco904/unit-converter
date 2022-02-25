@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
-import 'package:tutorial_inicial/app/utils/strings.dart';
+import 'package:tutorial_inicial/app/core/utils/strings.dart';
 
 class UnitConverterController extends GetxController {
   String? fromUnit;
