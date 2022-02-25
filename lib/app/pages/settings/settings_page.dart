@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/core/controllers/locale_controller.dart';
 import 'package:tutorial_inicial/app/modules/category_list/local_widgets/locale_tile.dart';
-import 'package:tutorial_inicial/app/utils/device.dart';
+import 'package:tutorial_inicial/app/core/utils/device.dart';
 
 class SettingsPage extends StatelessWidget {
   final LocaleController localeController = Get.find<LocaleController>();

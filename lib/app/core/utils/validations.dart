@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
 String? validateIntText(String? value) {
+  value = value?.replaceAll(',', '.');
+  
   if (value == null || value.isEmpty) {
     return 'converter_validation_required'.tr;
-  } else if (value.contains(RegExp(r'\D'))) {
+  } else if (num.tryParse(value) == null) {
     return 'converter_validation_invalid'.tr;
   }
   return null;

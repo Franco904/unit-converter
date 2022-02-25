@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/data/model/category.dart';
 import 'package:tutorial_inicial/app/routes/routes.dart';
-import 'package:tutorial_inicial/app/utils/strings.dart';
+import 'package:tutorial_inicial/app/core/utils/strings.dart';
 
 class CategoryTile extends StatelessWidget {
   final Category category;
