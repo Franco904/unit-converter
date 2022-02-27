@@ -21,9 +21,7 @@ void main() {
     });
 
     test('Deve mostrar erro se o atributo id for negativo', () {
-      expect(
-        () => Unit(id: -40, name: 'Meter', idCategory: 1),
-        throwsAssertionError);
+      expect(() => Unit(id: -40, name: 'Meter', idCategory: 1), throwsAssertionError);
     });
   });
 }

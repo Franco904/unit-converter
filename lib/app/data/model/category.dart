@@ -7,5 +7,5 @@ class Category {
   final IconData icon;
   final List<Unit> units;
 
-  const Category({required this.id, required this.name, required this.units, required this.icon}) : assert (id > 0);
+  const Category({required this.id, required this.name, required this.units, required this.icon}) : assert(id > 0);
 }

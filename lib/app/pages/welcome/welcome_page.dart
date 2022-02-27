@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutorial_inicial/app/core/utils/session.dart';
-import 'package:tutorial_inicial/app/modules/category_list/category_list_page.dart';
 import 'package:tutorial_inicial/app/routes/routes.dart';
 
 class WelcomePage extends StatelessWidget {

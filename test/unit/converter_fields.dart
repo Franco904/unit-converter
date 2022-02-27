@@ -9,8 +9,8 @@ void main() {
       expect(validateIntText('500'), null);
       expect(validateIntText('-40'), null);
       expect(validateIntText('8790.25'), null);
-      expect(validateIntText('-50.27'), null);
-      expect(validateIntText('400000.375'), null);
+      expect(validateIntText('-50,27'), null);
+      expect(validateIntText('400000,375'), null);
     });
 
     test('Deve rejeitar valor nulo no campo', () {

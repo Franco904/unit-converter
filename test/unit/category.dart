@@ -37,9 +37,7 @@ void main() {
     });
 
     test('Deve mostrar erro se o atributo id for negativo/inválido', () {
-      expect(
-        () => Category(id: -5, name: 'Length', units: [units[0], units[1], units[2]], icon: Icons.            bar_chart_rounded),
-        throwsAssertionError);
+      expect(() => Category(id: -5, name: 'Length', units: [units[0], units[1], units[2]], icon: Icons.bar_chart_rounded), throwsAssertionError);
     });
   });
 }
