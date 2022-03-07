@@ -11,7 +11,7 @@ class LocaleService extends GetxService {
     return this;
   }
 
-  Future<Locale?> write(Locale locale) async {
+  Future<void> write(Locale locale) async {
     await writeCurrentLocale(locale);
   }
 }
