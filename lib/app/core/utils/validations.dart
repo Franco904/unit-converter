@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 String? validateIntText(String? value) {
   value = value?.replaceAll(',', '.');
-  
+
   if (value == null || value.isEmpty) {
     return 'converter_validation_required'.tr;
   } else if (num.tryParse(value) == null) {

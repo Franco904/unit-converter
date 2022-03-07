@@ -17,12 +17,12 @@ Future<void> writeFirstAccess(bool firstAccess) async {
   await _secureStorage.write(key: _firstAccessKey, value: firstAccess.toString());
 }
 
-Future<void> writeCurrentLocale(Locale locale) async {
-  return await _secureStorage.write(key: _currentLocaleKey, value: locale.toString());
-}
-
 Future<Locale?> readCurrentLocale() async {
   final currentLocaleString = await _secureStorage.read(key: _currentLocaleKey);
 
   return parseLocale(currentLocaleString);
+}
+
+Future<void> writeCurrentLocale(Locale locale) async {
+  await _secureStorage.write(key: _currentLocaleKey, value: locale.toString());
 }

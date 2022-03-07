@@ -29,7 +29,7 @@ class CategoryTile extends StatelessWidget {
           splashColor: Colors.cyan.withOpacity(0.3),
           borderRadius: BorderRadius.circular(4),
           onTap: () {
-             Get.toNamed(Routes.CONVERTER, arguments: category);
+            Get.toNamed(Routes.CONVERTER, arguments: category);
           },
           child: Padding(
             padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 16),
