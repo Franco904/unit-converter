@@ -16,17 +16,19 @@ void main() {
       ],
       icon: Icons.speed_rounded);
 
-  testWidgets('Deve apresentar card com nome da categoria na tela', (tester) async {
-    await tester.pumpWidget(MaterialApp(home: CategoryTile(category: category)));
+  group('CategoryTile Widget | ', () {
+    testWidgets('Deve apresentar card com nome da categoria na tela', (tester) async {
+      await tester.pumpWidget(MaterialApp(home: CategoryTile(category: category)));
 
-    final categoryCard = find.widgetWithText(Card, 'category_speed'.tr);
-    expect(categoryCard, findsOneWidget);
-  });
+      final categoryCard = find.widgetWithText(Card, 'category_speed'.tr);
+      expect(categoryCard, findsOneWidget);
+    });
 
-  testWidgets('Deve apresentar card com ícone da categoria na tela', (tester) async {
-    await tester.pumpWidget(MaterialApp(home: CategoryTile(category: category)));
+    testWidgets('Deve apresentar card com ícone da categoria na tela', (tester) async {
+      await tester.pumpWidget(MaterialApp(home: CategoryTile(category: category)));
 
-    final categoryCard = find.widgetWithIcon(Card, Icons.speed_rounded);
-    expect(categoryCard, findsOneWidget);
+      final categoryCard = find.widgetWithIcon(Card, Icons.speed_rounded);
+      expect(categoryCard, findsOneWidget);
+    });
   });
 }
