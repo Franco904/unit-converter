@@ -11,15 +11,15 @@ class UnitDao {
     final response = await rootBundle.loadString('lib/assets/data/units.json');
     final unitsJson = await jsonDecode(response);
 
-    List<Unit> listUnit = [];
+    List<Unit> unitList = [];
 
     for (Map<String, dynamic> u in unitsJson) {
       var unit = Unit.fromJson(u);
       if (unit.idCategory == idCategory) {
-        listUnit.add(unit);
+        unitList.add(unit);
       }
     }
 
-    return listUnit;
+    return unitList;
   }
 }

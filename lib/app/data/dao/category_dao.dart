@@ -31,7 +31,7 @@ class CategoryDao {
       Icons.aspect_ratio_rounded,
       Ionicons.cube_outline,
       Ionicons.barbell_outline,
-      Icons.timer_rounded,
+      Icons.timer_outlined,
       Icons.memory_rounded,
       Icons.attach_money_rounded,
       Icons.lightbulb_outline,
