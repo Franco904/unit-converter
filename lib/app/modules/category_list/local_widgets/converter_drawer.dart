@@ -21,9 +21,9 @@ class ConverterDrawer extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           DrawerOptionItem(icon: Icons.info_outline, text: 'info_title'.tr, onTap: () => Get.toNamed(Routes.INFO)),
-          Divider(color: Colors.grey),
+          const Divider(color: Colors.grey),
           DrawerOptionItem(icon: Icons.settings_outlined, text: 'settings_title'.tr, onTap: () => Get.toNamed(Routes.SETTINGS)),
         ],
       ),
@@ -47,7 +47,7 @@ class DrawerOptionItem extends StatelessWidget {
           children: [
             Icon(icon),
             Padding(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: Text(text),
             ),
           ],

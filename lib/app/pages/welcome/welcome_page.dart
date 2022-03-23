@@ -8,46 +8,46 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              SizedBox(height: 64),
+              const SizedBox(height: 64),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'app_title'.tr,
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.cyan),
+                  style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.cyan),
                 ),
               ),
-              SizedBox(height: 36),
+              const SizedBox(height: 36),
               Flexible(
                 child: Container(
-                  constraints: BoxConstraints(maxWidth: 225, maxHeight: 300),
+                  constraints: const BoxConstraints(maxWidth: 225, maxHeight: 300),
                   child: Image.asset('./lib/assets/images/welcome_image.png'),
                 ),
               ),
-              SizedBox(height: 36),
+              const SizedBox(height: 36),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'welcome_label'.tr,
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: const TextStyle(fontSize: 16, color: Colors.grey),
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               ElevatedButton(
                   onPressed: () async {
                     Get.offNamed(Routes.CATEGORY);
                     await writeFirstAccess(false);
                   },
-                  style: ElevatedButton.styleFrom(primary: Colors.cyan[600], textStyle: TextStyle(fontSize: 18)),
+                  style: ElevatedButton.styleFrom(primary: Colors.cyan[600], textStyle: const TextStyle(fontSize: 18)),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                     child: Text(
                       'welcome_button'.tr,
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   )),
             ],

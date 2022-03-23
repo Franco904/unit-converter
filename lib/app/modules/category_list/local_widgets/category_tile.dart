@@ -17,7 +17,7 @@ class CategoryTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
             blurRadius: 16,
             spreadRadius: -4,
             color: Colors.grey.shade200,
@@ -32,15 +32,15 @@ class CategoryTile extends StatelessWidget {
             Get.toNamed(Routes.CONVERTER, arguments: category);
           },
           child: Padding(
-            padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 16),
+            padding: const EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 16),
             child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
               Center(child: Icon(category.icon)),
               Center(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Text(
                     categoryNameLocated(category.name),
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ),

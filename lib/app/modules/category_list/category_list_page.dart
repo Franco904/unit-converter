@@ -31,7 +31,8 @@ class CategoryListPage extends GetView<CategoryListController> {
         body: ListView.builder(
             itemCount: controller.categories.length,
             itemBuilder: (_, i) {
-              return Padding(padding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), child: CategoryTile(category: controller.categories[i]));
+              return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), child: CategoryTile(category: controller.categories[i]));
             }),
       ),
     );

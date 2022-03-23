@@ -7,7 +7,7 @@ class SplashScreenPage extends GetView<SplashScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Obx(() => controller.isLoading.value ? CircularProgressIndicator(color: Colors.cyan) : Container()),
+      child: Obx(() => controller.isLoading.value ? const CircularProgressIndicator(color: Colors.cyan) : Container()),
     ));
   }
 }

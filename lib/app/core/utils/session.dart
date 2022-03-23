@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:tutorial_inicial/app/core/utils/locale.dart';
 
-final _secureStorage = FlutterSecureStorage();
+const _secureStorage = FlutterSecureStorage();
 
 const _firstAccessKey = 'first_access_key';
 const _currentLocaleKey = 'current_locale';

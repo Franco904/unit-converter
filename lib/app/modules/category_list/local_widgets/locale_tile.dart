@@ -18,15 +18,15 @@ class LocaleTile extends StatelessWidget {
           await updateLocale(locale['locale']);
         },
         child: Padding(
-          padding: EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 24),
+          padding: const EdgeInsets.only(top: 16, right: 16, bottom: 16, left: 24),
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Center(child: Icon(Icons.language_rounded, size: 25)),
+            const Center(child: Icon(Icons.language_rounded, size: 25)),
             Center(
               child: Padding(
-                padding: EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20),
                 child: Text(
                   '${locale['name']}',
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
               ),
             ),

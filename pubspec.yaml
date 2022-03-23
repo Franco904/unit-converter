@@ -23,6 +23,9 @@ dependencies:
   # State management
   get: ^4.5.1
 
+  # UI
+  device_preview: ^1.0.0
+
 dev_dependencies:
   # Teste
   test: ^1.17.12

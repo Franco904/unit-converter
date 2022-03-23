@@ -7,13 +7,13 @@ class LocaleController extends GetxController {
   final RxString currentLocale = Get.locale.toString().obs;
 
   final List<Map> locales = [
-    {'name': 'English', 'locale': Locale('en', 'US')},
-    {'name': 'Español', 'locale': Locale('es', 'AR')},
-    {'name': 'Português', 'locale': Locale('pt', 'BR')}
+    {'name': 'English', 'locale': const Locale('en', 'US')},
+    {'name': 'Español', 'locale': const Locale('es', 'AR')},
+    {'name': 'Português', 'locale': const Locale('pt', 'BR')}
   ];
 
   Future<void> updateLocale(Locale locale) async {
-    Future.delayed(Duration(milliseconds: 200), () {
+    Future.delayed(const Duration(milliseconds: 200), () {
       // Atualiza locale app
       Get.updateLocale(locale);
 

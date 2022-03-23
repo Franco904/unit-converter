@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:tutorial_inicial/app/core/services/locale_service.dart';
 import 'package:tutorial_inicial/app/core/utils/global_bindings.dart';
 import 'package:tutorial_inicial/app/core/utils/translations.dart';
@@ -12,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await loadDeviceOrientation();
-  await initialConfig().then((_) => runApp(UnitConverterApp()));
+  await initialConfig().then((_) => runApp(DevicePreview(enabled: !kReleaseMode, builder: (_) => UnitConverterApp())));
 }
 
 Future<void> initialConfig() async {
@@ -32,10 +34,11 @@ class UnitConverterApp extends StatelessWidget {
       initialRoute: Routes.SPLASH,
       initialBinding: GlobalBindings(),
       getPages: getAppPages(),
+      builder: DevicePreview.appBuilder,
       locale: localeStorage.currentLocale,
       translations: UnitConverterTranslations(),
       theme: ThemeData(
-        appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
+        appBarTheme: const AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
       ),
     );
   }

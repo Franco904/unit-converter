@@ -7,7 +7,7 @@ class SplashScreenController extends GetxController {
 
   @override
   void onInit() {
-    Future.delayed(Duration(seconds: 2), () async {
+    Future.delayed(const Duration(seconds: 2), () async {
       final firstAccess = await checkFirstAccess();
       isLoading.value = false;
 
