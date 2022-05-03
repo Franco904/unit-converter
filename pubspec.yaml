@@ -27,13 +27,14 @@ dependencies:
   device_preview: ^1.0.0
 
 dev_dependencies:
-  # Teste
+  # Test
   test: ^1.17.12
   flutter_test:
     sdk: flutter
 
   # Code practices
   flutter_lints: ^1.0.0
+  dart_code_metrics: ^4.14.0
 
 flutter_icons:
   image_path: 'lib/assets/icons/unit_converter_icon.png'
